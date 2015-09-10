@@ -1,0 +1,154 @@
+//
+//  GmailConstants.swift
+//  MailApp
+//
+//  Created by ShimmenNobuyoshi on 2015/07/20.
+//  Copyright (c) 2015年 Shimmen Nobuyoshi. All rights reserved.
+//
+
+import Foundation
+import CoreData
+
+class GmailClientHelper {
+
+//    struct GmailService {
+//        static let service = GTLServiceGmail()
+//    }
+
+    static let sharedInstance = GmailClientHelper()
+    let service = GTLServiceGmail()
+    lazy var sharedContext: NSManagedObjectContext = {
+        return CoreDataStackManager.sharedInstance.managedObjectContext!
+    }()
+    
+    struct Keys {
+        static let kKeychainItemName = "Gmail API"
+        static let kClientID = "535786933516-s2iitvtsmrm3o925cs0t9p6okj0n9np2.apps.googleusercontent.com"
+        static let kClientSecret = "Xanr--tE4syyjDydG7Jx5t_J"
+    }
+
+    func fetchMailList(label: Label, label2: String?, maxNumber: Int, completionHandler: (success: Bool, results: [GTLGmailMessage]?, error: NSError? ) -> Void ) {
+        let query = GTLQueryGmail.queryForUsersMessagesList() as GTLQueryGmail
+        query.maxResults = UInt(maxNumber)
+        if label2 != nil {
+            query.labelIds = [label.labelId, label2!]
+        } else {
+            query.labelIds = [label.labelId]
+        }
+        GmailClientHelper.sharedInstance.service.executeQuery(query) { ticket, response, error in
+            if error == nil {
+                if let MessagesListResponse = response as? GTLGmailListMessagesResponse {
+                    let messagesData = MessagesListResponse.messages as? [GTLGmailMessage]
+                completionHandler(success: true, results: messagesData, error: nil)
+                }
+            } else {
+                completionHandler(success: false, results: nil, error : error)
+            }
+        }
+    }
+
+    func fetchMail(list: [GTLGmailMessage], labelToBelongTo: Label, completionHandler: (success: Bool, error: NSError?, cardsToMake: [Mail]?) -> Void ) {
+        var numberOfCardsToMake = list.count
+        var cardsToMake = [Mail]() {
+            didSet {
+                if cardsToMake.count == numberOfCardsToMake {
+                    completionHandler(success: true, error: nil, cardsToMake: cardsToMake)
+                    CoreDataStackManager.sharedInstance.saveContext()
+                }
+            }
+        }
+        for item in list {
+            let query = GTLQueryGmail.queryForUsersMessagesGet() as GTLQueryGmail
+            query.identifier = item.identifier
+            GmailClientHelper.sharedInstance.service.executeQuery(query) { ticket, response, error in
+                if error == nil {
+                    if let messagesResponse = response as? GTLGmailMessage {
+                        let id = messagesResponse.identifier
+                        let historyId = messagesResponse.historyId
+                        let snippet = messagesResponse.snippet
+                        let threadId = messagesResponse.threadId
+                        var to = ""
+                        var from = ""
+                        var subject = ""
+                        for item in messagesResponse.payload.headers as NSArray {
+                            let name = item.valueForKey("name") as! String
+                            if name == "To" {
+                                to = item.valueForKey("value") as! String
+                            } else if name == "From" {
+                                from = item.valueForKey("value") as! String
+                            } else if name == "Subject" {
+                                subject = item.valueForKey("value") as! String
+                            }
+                        }
+                        let mimeType = messagesResponse.payload.mimeType
+                        var message = ""
+                        var altMessage: String? = nil
+                        print(mimeType)
+                        if messagesResponse.payload.parts != nil {
+                            let parts = messagesResponse.payload.parts as NSArray
+                            let body = parts.lastObject?.body
+                            let data = body!.data
+                            if data != nil { message = self.readBodydata(data) }
+                            let altBody = parts.firstObject?.body
+                            let altData = altBody!.data
+                            if altData != nil { altMessage = self.readBodydata(altData) }
+                        } else if messagesResponse.payload.body.data != nil {
+                            message = self.readBodydata(messagesResponse.payload.body.data)
+                        } else {
+                            print("Error")
+                        }
+                        let mailToQuery = self.queryForMail(id)
+                        if mailToQuery.count > 0 {
+                            print("Same mail exists")
+                            let mail = mailToQuery.first as Mail!
+                            if mail.label != labelToBelongTo {
+                                mail.label = labelToBelongTo
+                            }
+                            cardsToMake.append(mailToQuery.first!)
+                        } else {
+                            let dict: [String: AnyObject] = ["id": id, "historyId": historyId, "snippet": snippet, "threadId": threadId, "to": to, "from": from, "subject": subject, "mimeType": mimeType, "message": message]
+                            let mail = Mail(dict: dict, context: GmailClientHelper.sharedInstance.sharedContext)
+                            if altMessage != nil {
+                                mail.altMessage = altMessage!
+                            }
+                            mail.label = labelToBelongTo
+                            cardsToMake.append(mail)
+                        }
+                    }
+                } else {
+                    completionHandler(success: false, error: error, cardsToMake: nil)
+                }
+            }
+        }
+    }
+
+    func queryForLabel(labelId: String) -> [Label]{
+        var error: NSError?
+        let fetchRequest = NSFetchRequest(entityName: "Label")
+        fetchRequest.predicate = NSPredicate(format: "labelId == %@", labelId)
+        let results = self.sharedContext.executeFetchRequest(fetchRequest, error: &error)
+        if error != nil {
+            println("Error")
+        }
+        return results as! [Label]
+    }
+
+    func queryForMail(id: String) -> [Mail]{
+        var error: NSError?
+        let fetchRequest = NSFetchRequest(entityName: "Mail")
+        fetchRequest.predicate = NSPredicate(format: "id == %@", id)
+        let results = GmailClientHelper.sharedInstance.sharedContext.executeFetchRequest(fetchRequest, error: &error)
+        if error != nil {
+            println("Error")
+        }
+        return results as! [Mail]
+    }
+    
+    func readBodydata(data: String) -> String {
+        let bodyString = data.stringByReplacingOccurrencesOfString("-", withString: "+").stringByReplacingOccurrencesOfString("_", withString: "/")
+        var htmlData = NSData(base64EncodedString: bodyString, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters)
+        let string = NSString(data: htmlData!, encoding: NSUTF8StringEncoding) as? String
+        return string!
+    }
+
+}
