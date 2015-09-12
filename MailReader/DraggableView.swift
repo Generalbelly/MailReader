@@ -95,10 +95,6 @@ class DraggableView: WKWebView, UIGestureRecognizerDelegate {
         }
     }
 
-    deinit {
-        print("deinitialized")
-    }
-
     func convertToPlainText(text: String) {
         plainTextView = UITextView(frame: self.bounds)
         plainTextView!.scrollEnabled = true
@@ -224,7 +220,7 @@ class DraggableView: WKWebView, UIGestureRecognizerDelegate {
     }
 
     func changeLabels(mode: OverlayMode) {
-        let query = GTLQueryGmail.queryForUsersMessagesModify()
+        let query = GTLQueryGmail.queryForUsersMessagesModify() as! GTLQueryGmail
         query.identifier = self.messageId
         if mode == .Left {
             query.addLabelIds = ["TRASH"]
@@ -260,7 +256,8 @@ class DraggableView: WKWebView, UIGestureRecognizerDelegate {
             subject = title
         }
         let time = NSDate()
-        let dict: [String: AnyObject] = ["title": subject, "date": time, "html": self.htmlString!]
+        let uid = NSUUID().UUIDString
+        let dict: [String: AnyObject] = ["title": subject, "date": time, "html": self.htmlString!, "id": uid]
         let bookmark = Bookmark(dict: dict, context: self.sharedContext)
     }
 

@@ -1,0 +1,41 @@
+dependencies: \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Analytics/Generated/GTLQueryAnalytics.m \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Target\ Support\ Files/Google-API-Client/Google-API-Client-prefix.pch \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Analytics/Generated/GTLQueryAnalytics.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Objects/GTLQuery.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Objects/GTLObject.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/GTLDefines.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Utilities/GTLUtilities.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Objects/GTLDateTime.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Objects/GTLUploadParameters.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Analytics/Generated/GTLAnalyticsAccounts.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Analytics/Generated/GTLAnalyticsAccountSummaries.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Analytics/Generated/GTLAnalyticsAccountTicket.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Analytics/Generated/GTLAnalyticsColumns.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Analytics/Generated/GTLAnalyticsCustomDataSources.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Analytics/Generated/GTLAnalyticsDailyUploadAppend.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Analytics/Generated/GTLAnalyticsDailyUploads.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Analytics/Generated/GTLAnalyticsEntityAdWordsLink.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Analytics/Generated/GTLAnalyticsEntityAdWordsLinks.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Analytics/Generated/GTLAnalyticsEntityUserLink.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Analytics/Generated/GTLAnalyticsEntityUserLinks.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Analytics/Generated/GTLAnalyticsExperiment.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Analytics/Generated/GTLAnalyticsExperiments.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Analytics/Generated/GTLAnalyticsFilter.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Analytics/Generated/GTLAnalyticsFilters.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Analytics/Generated/GTLAnalyticsGaData.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Analytics/Generated/GTLAnalyticsGoal.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Analytics/Generated/GTLAnalyticsGoals.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Analytics/Generated/GTLAnalyticsMcfData.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Analytics/Generated/GTLAnalyticsProfile.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Analytics/Generated/GTLAnalyticsProfileFilterLink.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Analytics/Generated/GTLAnalyticsProfileFilterLinks.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Analytics/Generated/GTLAnalyticsProfiles.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Analytics/Generated/GTLAnalyticsRealtimeData.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Analytics/Generated/GTLAnalyticsSegments.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Analytics/Generated/GTLAnalyticsUnsampledReport.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Analytics/Generated/GTLAnalyticsUnsampledReports.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Analytics/Generated/GTLAnalyticsUpload.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Analytics/Generated/GTLAnalyticsUploads.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Analytics/Generated/GTLAnalyticsWebproperties.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Analytics/Generated/GTLAnalyticsWebproperty.h

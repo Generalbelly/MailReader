@@ -75,8 +75,6 @@ class MailViewController: UIViewController, DraggableViewDelegate, WKNavigationD
     // view life cycle
 
     override func viewDidLoad() {
-        self.navigationController?.navigationBar.barTintColor = UIColor.hex("#06d0e5", alpha: 1.0)
-        self.navigationController?.navigationBar.translucent = false
         self.setUpButtons()
         super.viewDidLoad()
         self.setupHUD()
@@ -141,6 +139,7 @@ class MailViewController: UIViewController, DraggableViewDelegate, WKNavigationD
         self.hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         self.hud.mode = MBProgressHUDMode.AnnularDeterminate
         self.hud.labelText = "Loading"
+        self.hud.hidden = false
     }
 
     func disableButton() {
@@ -221,7 +220,7 @@ class MailViewController: UIViewController, DraggableViewDelegate, WKNavigationD
 
     func cardLoadingCheck(view: DraggableView, completed: Bool) {
         if view.tag == self.counter && completed == true {
-//            self.hud.hide(true)
+            self.hud.hide(true)
             self.hud.hidden = true
             if self.selectedBookmark == nil {
                 self.readerButton.enabled = true
@@ -243,7 +242,6 @@ class MailViewController: UIViewController, DraggableViewDelegate, WKNavigationD
     func webView(webView: WKWebView, decidePolicyForNavigationResponse navigationResponse: WKNavigationResponse, decisionHandler: (WKNavigationResponsePolicy) -> Void) {
         if webView.tag == self.counter && self.hud.hidden {
             self.pageUrl = webView.URL?.absoluteString
-            print(self.pageUrl)
             self.performSegueWithIdentifier("detail", sender: self)
             decisionHandler(WKNavigationResponsePolicy.Cancel)
         } else {
@@ -253,16 +251,15 @@ class MailViewController: UIViewController, DraggableViewDelegate, WKNavigationD
 
     func webView(webView: WKWebView, createWebViewWithConfiguration configuration: WKWebViewConfiguration, forNavigationAction navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
         if webView.tag == self.counter {
-            print("SHOw4")
             self.pageUrl = navigationAction.request.URL?.absoluteString
-            print(self.pageUrl)
             self.performSegueWithIdentifier("detail", sender: self)
         }
         return nil
     }
 
     func createCard(mail: Mail?, bookmark: Bookmark?) {
-        let cardFrame = CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y, self.view.bounds.size.width, self.view.bounds.size.height)
+        let navBarHeightAndStatusBarHeight =  self.navigationController!.navigationBar.frame.size.height + UIApplication.sharedApplication().statusBarFrame.size.height
+        let cardFrame = CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y + navBarHeightAndStatusBarHeight, self.view.bounds.size.width, self.view.bounds.size.height)
         let jScript = "var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width'); document.getElementsByTagName('head')[0].appendChild(meta);"
         let wkUScript = WKUserScript(source: jScript, injectionTime: WKUserScriptInjectionTime.AtDocumentEnd, forMainFrameOnly: true)
         let wkUcontentController = WKUserContentController()
@@ -303,7 +300,7 @@ class MailViewController: UIViewController, DraggableViewDelegate, WKNavigationD
             case "text/html":
                 cardView.htmlString = mail!.message
             default:
-                print("Not expected")
+                break
             }
             cardView.historyId = mail!.historyId as Int
         } else {

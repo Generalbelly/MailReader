@@ -45,15 +45,3 @@ class Mail: NSManagedObject {
     }
 
 }
-
-//extension Mail {
-//    func addObject(value: Label) {
-//        var items = self.valueForKeyPath("labels") as! NSMutableSet
-//        items.addObject(value)
-//    }
-//    func removeObject(value: Label) {
-//        var items = self.valueForKeyPath("labels") as! NSMutableSet
-//        items.removeObject(value)
-//    }
-//    
-//}

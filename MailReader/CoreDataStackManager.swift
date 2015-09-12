@@ -1,6 +1,6 @@
 //
 //  CoreDataStackManager.swift
-//  MailApp
+//  MailReader
 //
 //  Created by ShimmenNobuyoshi on 2015/06/01.
 //  Copyright (c) 2015年 Shimmen Nobuyoshi. All rights reserved.
@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-private let SQLITE_FILE_NAME = "MailApp.sqlite"
+private let SQLITE_FILE_NAME = "MailReader.sqlite"
 
 class CoreDataStackManager {
 

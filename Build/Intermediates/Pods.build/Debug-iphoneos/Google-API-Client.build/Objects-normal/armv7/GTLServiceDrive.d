@@ -1,0 +1,46 @@
+dependencies: \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Drive/Generated/GTLServiceDrive.m \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Target\ Support\ Files/Google-API-Client/Google-API-Client-prefix.pch \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Drive/Generated/GTLDrive.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Drive/Generated/GTLDriveConstants.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/GTLDefines.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Drive/Generated/GTLDriveAbout.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Objects/GTLObject.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Utilities/GTLUtilities.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Objects/GTLDateTime.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Drive/Generated/GTLDriveApp.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Drive/Generated/GTLDriveAppList.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Drive/Generated/GTLDriveChange.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Drive/Generated/GTLDriveChangeList.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Drive/Generated/GTLDriveChannel.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Drive/Generated/GTLDriveChildList.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Drive/Generated/GTLDriveChildReference.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Drive/Generated/GTLDriveComment.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Drive/Generated/GTLDriveCommentList.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Drive/Generated/GTLDriveCommentReply.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Drive/Generated/GTLDriveCommentReplyList.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Drive/Generated/GTLDriveFile.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Drive/Generated/GTLDriveFileList.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Drive/Generated/GTLDriveParentList.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Drive/Generated/GTLDriveParentReference.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Drive/Generated/GTLDrivePermission.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Drive/Generated/GTLDrivePermissionId.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Drive/Generated/GTLDrivePermissionList.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Drive/Generated/GTLDriveProperty.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Drive/Generated/GTLDrivePropertyList.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Drive/Generated/GTLDriveRevision.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Drive/Generated/GTLDriveRevisionList.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Drive/Generated/GTLDriveUser.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Drive/Generated/GTLQueryDrive.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Objects/GTLQuery.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Objects/GTLUploadParameters.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/Drive/Generated/GTLServiceDrive.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Objects/GTLService.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/gtm-http-fetcher/Source/GTMHTTPFetcher.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/gtm-http-fetcher/Source/GTMHTTPFetcherService.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/gtm-http-fetcher/Source/GTMHTTPFetchHistory.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Objects/GTLBatchQuery.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Objects/GTLBatchResult.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Objects/GTLErrorObject.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Utilities/GTLFramework.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Utilities/GTLJSONParser.h

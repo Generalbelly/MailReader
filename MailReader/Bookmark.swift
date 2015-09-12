@@ -16,6 +16,7 @@ class Bookmark: NSManagedObject {
     @NSManaged var html: String
     @NSManaged var date: NSDate
     @NSManaged var title: String
+    @NSManaged var id: String
 
     override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
@@ -27,6 +28,7 @@ class Bookmark: NSManagedObject {
         self.html = dict["html"] as! String
         self.date = dict["date"] as! NSDate
         self.title = dict["title"] as! String
+        self.id = dict["id"] as! String
     }
     
 }

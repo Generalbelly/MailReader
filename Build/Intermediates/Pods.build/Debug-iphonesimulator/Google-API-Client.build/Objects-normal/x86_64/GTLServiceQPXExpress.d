@@ -1,0 +1,44 @@
+dependencies: \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/QPXExpress/Generated/GTLServiceQPXExpress.m \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Target\ Support\ Files/Google-API-Client/Google-API-Client-prefix.pch \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/QPXExpress/Generated/GTLQPXExpress.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/QPXExpress/Generated/GTLQPXExpressAircraftData.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Objects/GTLObject.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/GTLDefines.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Utilities/GTLUtilities.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Objects/GTLDateTime.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/QPXExpress/Generated/GTLQPXExpressAirportData.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/QPXExpress/Generated/GTLQPXExpressBagDescriptor.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/QPXExpress/Generated/GTLQPXExpressCarrierData.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/QPXExpress/Generated/GTLQPXExpressCityData.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/QPXExpress/Generated/GTLQPXExpressData.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/QPXExpress/Generated/GTLQPXExpressFareInfo.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/QPXExpress/Generated/GTLQPXExpressFlightInfo.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/QPXExpress/Generated/GTLQPXExpressFreeBaggageAllowance.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/QPXExpress/Generated/GTLQPXExpressLegInfo.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/QPXExpress/Generated/GTLQPXExpressPassengerCounts.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/QPXExpress/Generated/GTLQPXExpressPricingInfo.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/QPXExpress/Generated/GTLQPXExpressSegmentInfo.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/QPXExpress/Generated/GTLQPXExpressSegmentPricing.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/QPXExpress/Generated/GTLQPXExpressSliceInfo.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/QPXExpress/Generated/GTLQPXExpressSliceInput.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/QPXExpress/Generated/GTLQPXExpressTaxData.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/QPXExpress/Generated/GTLQPXExpressTaxInfo.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/QPXExpress/Generated/GTLQPXExpressTimeOfDayRange.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/QPXExpress/Generated/GTLQPXExpressTripOption.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/QPXExpress/Generated/GTLQPXExpressTripOptionsRequest.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/QPXExpress/Generated/GTLQPXExpressTripOptionsResponse.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/QPXExpress/Generated/GTLQPXExpressTripsSearchResponse.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/QPXExpress/Generated/GTLQueryQPXExpress.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Objects/GTLQuery.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Objects/GTLUploadParameters.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/QPXExpress/Generated/GTLServiceQPXExpress.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Objects/GTLService.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/gtm-http-fetcher/Source/GTMHTTPFetcher.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/gtm-http-fetcher/Source/GTMHTTPFetcherService.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/gtm-http-fetcher/Source/GTMHTTPFetchHistory.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Objects/GTLBatchQuery.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Objects/GTLBatchResult.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Objects/GTLErrorObject.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Utilities/GTLFramework.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Utilities/GTLJSONParser.h

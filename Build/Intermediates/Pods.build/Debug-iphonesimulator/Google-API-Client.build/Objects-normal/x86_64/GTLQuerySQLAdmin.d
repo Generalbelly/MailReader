@@ -1,0 +1,37 @@
+dependencies: \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/SQLAdmin/Generated/GTLQuerySQLAdmin.m \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Target\ Support\ Files/Google-API-Client/Google-API-Client-prefix.pch \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/SQLAdmin/Generated/GTLQuerySQLAdmin.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Objects/GTLQuery.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Objects/GTLObject.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/GTLDefines.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Utilities/GTLUtilities.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Objects/GTLDateTime.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Objects/GTLUploadParameters.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/SQLAdmin/Generated/GTLSQLAdminBackupRun.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/SQLAdmin/Generated/GTLSQLAdminBackupRunsListResponse.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/SQLAdmin/Generated/GTLSQLAdminCloneContext.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/SQLAdmin/Generated/GTLSQLAdminDatabaseInstance.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/SQLAdmin/Generated/GTLSQLAdminExportContext.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/SQLAdmin/Generated/GTLSQLAdminFlagsListResponse.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/SQLAdmin/Generated/GTLSQLAdminImportContext.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/SQLAdmin/Generated/GTLSQLAdminInstanceOperation.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/SQLAdmin/Generated/GTLSQLAdminInstancesCloneResponse.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/SQLAdmin/Generated/GTLSQLAdminInstancesDeleteResponse.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/SQLAdmin/Generated/GTLSQLAdminInstancesExportResponse.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/SQLAdmin/Generated/GTLSQLAdminInstancesImportResponse.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/SQLAdmin/Generated/GTLSQLAdminInstancesInsertResponse.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/SQLAdmin/Generated/GTLSQLAdminInstancesListResponse.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/SQLAdmin/Generated/GTLSQLAdminInstancesPromoteReplicaResponse.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/SQLAdmin/Generated/GTLSQLAdminInstancesResetSslConfigResponse.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/SQLAdmin/Generated/GTLSQLAdminInstancesRestartResponse.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/SQLAdmin/Generated/GTLSQLAdminInstancesRestoreBackupResponse.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/SQLAdmin/Generated/GTLSQLAdminInstancesSetRootPasswordResponse.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/SQLAdmin/Generated/GTLSQLAdminInstancesUpdateResponse.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/SQLAdmin/Generated/GTLSQLAdminOperationsListResponse.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/SQLAdmin/Generated/GTLSQLAdminSetRootPasswordContext.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/SQLAdmin/Generated/GTLSQLAdminSslCert.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/SQLAdmin/Generated/GTLSQLAdminSslCertsDeleteResponse.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/SQLAdmin/Generated/GTLSQLAdminSslCertsInsertResponse.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/SQLAdmin/Generated/GTLSQLAdminSslCertsListResponse.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/SQLAdmin/Generated/GTLSQLAdminTiersListResponse.h

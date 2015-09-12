@@ -44,30 +44,6 @@ class TrashTableViewController: UITableViewController, MGSwipeTableCellDelegate 
                 } else if self.reason == .FirstTime {
                     self.reloadData()
                 }
-
-//                    self.oldestMailHistoryId = self.mailsInTrash.last?.historyId as! Int
-//                    self.newestMailHistoryId = self.mailsInTrash.first?.historyId as! Int
-//                    self.tableView.reloadData()
-//                    self.tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
-//                    if self.hud != nil {
-//                        self.hud.hide(true)
-//                    }
-//                    if self.refreshControl!.refreshing == true {
-//                        self.refreshControl!.endRefreshing()
-//                    }
-//                } else if self.reason == .Reloaded && self.mailsInTrash.count == self.mailsCounted {
-//                    self.reloadData()
-////                    self.oldestMailHistoryId = self.mailsInTrash.last?.historyId as! Int
-////                    self.newestMailHistoryId = self.mailsInTrash.first?.historyId as! Int
-////                    self.tableView.reloadData()
-////                    self.tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
-////                    if self.hud != nil {
-////                        self.hud.hide(true)
-////                    }
-////                    if self.refreshControl!.refreshing == true {
-////                        self.refreshControl!.endRefreshing()
-////                    }
-//                }
             }
         }
     }
@@ -83,8 +59,6 @@ class TrashTableViewController: UITableViewController, MGSwipeTableCellDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.label = GmailClientHelper.sharedInstance.queryForLabel("TRASH").first
-        self.navigationController?.navigationBar.barTintColor = UIColor.hex("#06d0e5", alpha: 1.0)
-        self.navigationController?.navigationBar.translucent = false
         self.tableView.estimatedRowHeight = tableView.rowHeight
         self.tableView.rowHeight = UITableViewAutomaticDimension
     }
@@ -164,7 +138,6 @@ class TrashTableViewController: UITableViewController, MGSwipeTableCellDelegate 
                                         }
                                     }
                                     self.mailsCounted = self.mailsInTrash.count + self.newMails.count
-                                    print("NEWMAIL is\(self.newMails.count)")
                                     if self.newMails.count == 0 {
                                         self.hud.hide(true)
                                         self.refreshControl!.endRefreshing()
@@ -186,28 +159,6 @@ class TrashTableViewController: UITableViewController, MGSwipeTableCellDelegate 
                                         self.mailsInTrash.append(item)
                                     }
                             }
-//                            if self.reloaded {
-//                                for item in sortedMails {
-//                                    let hisId = item.historyId as Int
-//                                    if hisId > self.newestMailHistoryId && self.newestMailHistoryId != 0 {
-//                                        self.newMailCounter += 1
-//                                        self.mailsInTrash.insert(item, atIndex: 0)
-//                                    }
-//                                }
-//                                self.mailsInTrash = sortedMails
-//                            } else if self.timesOfScrollingToBottom > 1 {
-//                                for item in sortedMails {
-//                                    print("A")
-//                                    let hisId = item.historyId as Int
-//                                    if hisId < self.oldestMailHistoryId && self.oldestMailHistoryId != 0 {
-//                                        print("B")
-//                                        self.newMailCounter += 1
-//                                        self.mailsInTrash.append(item)
-//                                    }
-//                                }
-//                            } else {
-//                                self.mailsInTrash = sortedMails
-//                            }
                         } else {
                             self.showAlert("Error", message: error!.localizedDescription)
                         }
@@ -248,7 +199,7 @@ class TrashTableViewController: UITableViewController, MGSwipeTableCellDelegate 
         let indexPath = self.tableView.indexPathForCell(cell)
         if direction == MGSwipeDirection.LeftToRight {
             let button = MGSwipeButton(title: "UNREAD", backgroundColor: UIColor.hex("64b6ac", alpha: 1.0)){ sender in
-                let query = GTLQueryGmail.queryForUsersMessagesModify()
+                let query = GTLQueryGmail.queryForUsersMessagesModify() as! GTLQueryGmail
                 let mail = self.mailsInTrash[indexPath!.row]
                 query.identifier = mail.id
                 query.addLabelIds = ["UNREAD", "INBOX"]

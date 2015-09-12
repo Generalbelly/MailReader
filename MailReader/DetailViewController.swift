@@ -23,6 +23,8 @@ class DetailViewController: UIViewController, WKNavigationDelegate, WKUIDelegate
     var forwardButton: UIBarButtonItem!
     var currentHtml: String?
     var bookmarkTitle = ""
+    var alreadyBookmarked = false
+    var currentBookmarkId: String?
     lazy var sharedContext: NSManagedObjectContext = {
         return CoreDataStackManager.sharedInstance.managedObjectContext!
     }()
@@ -83,7 +85,14 @@ class DetailViewController: UIViewController, WKNavigationDelegate, WKUIDelegate
         refresh = UIBarButtonItem(barButtonSystemItem: .Refresh, target: webView, action: "reload")
         refresh.enabled = false
         let bookmarkIcon = UIImage(named: "bookmarkButton")
-        bookmarkButton = UIBarButtonItem(image: bookmarkIcon, style: .Plain, target: self, action: "bookmarked:")
+        let coloredbookmark = UIImage(named: "coloredbookmark")
+        let bookmarkFrame = CGRectMake(0, 0, bookmarkIcon!.size.width, bookmarkIcon!.size.height)
+        let button: UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+        button.frame = bookmarkFrame
+        button.setBackgroundImage(bookmarkIcon, forState: .Normal)
+        button.setBackgroundImage(coloredbookmark, forState: UIControlState.Highlighted)
+        button.addTarget(self, action: "bookmarked:", forControlEvents: UIControlEvents.TouchUpInside)
+        bookmarkButton = UIBarButtonItem(customView: button)
         bookmarkButton.enabled = false
         toolbarItems = [backButton, spacer, forwardButton, spacer, bookmarkButton, spacer, refresh]
         self.navigationController?.toolbar.tintColor = UIColor.hex("64b6ac", alpha: 1.0)
@@ -93,7 +102,7 @@ class DetailViewController: UIViewController, WKNavigationDelegate, WKUIDelegate
 
         let closeIcon = UIImage(named: "xbutton")
         let closeButton = UIBarButtonItem(image: closeIcon, style: .Plain, target: self, action: "closeTapped:")
-        navigationItem.leftBarButtonItem = closeButton
+        self.navigationItem.leftBarButtonItem = closeButton
         self.navigationController?.navigationBar.barTintColor = UIColor.hex("06d0e5", alpha: 1.0)
         self.navigationController?.navigationBar.translucent = false
     }
@@ -112,10 +121,33 @@ class DetailViewController: UIViewController, WKNavigationDelegate, WKUIDelegate
     }
 
     func bookmarked(sender: AnyObject) {
-        print("Bookmarked")
-        let time = NSDate()
-        let dict: [String: AnyObject] = ["title": self.title!, "date": time, "html": self.currentHtml!]
-        let bookmark = Bookmark(dict: dict, context: self.sharedContext)
+        if self.alreadyBookmarked {
+            self.alreadyBookmarked = false
+            let bookmark = self.queryForBookmark(self.currentBookmarkId!).first
+            self.sharedContext.deleteObject(bookmark!)
+            self.currentBookmarkId = nil
+        } else {
+            self.alreadyBookmarked = true
+            let time = NSDate()
+            let uid = NSUUID().UUIDString
+            self.currentBookmarkId = uid
+            if self.currentHtml != nil {
+                let dict: [String: AnyObject] = ["title": self.title!, "date": time, "html": self.currentHtml!, "id": uid]
+                let bookmark = Bookmark(dict: dict, context: self.sharedContext)
+            }
+        }
+        CoreDataStackManager.sharedInstance.saveContext()
+    }
+
+    func queryForBookmark(id: String) -> [Bookmark]{
+        var error: NSError?
+        let fetchRequest = NSFetchRequest(entityName: "Bookmark")
+        fetchRequest.predicate = NSPredicate(format: "id == %@", id)
+        let results = self.sharedContext.executeFetchRequest(fetchRequest, error: &error)
+        if error != nil {
+            println("Error")
+        }
+        return results as! [Bookmark]
     }
 
     func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {

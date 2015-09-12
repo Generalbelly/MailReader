@@ -11,10 +11,6 @@ import CoreData
 
 class GmailClientHelper {
 
-//    struct GmailService {
-//        static let service = GTLServiceGmail()
-//    }
-
     static let sharedInstance = GmailClientHelper()
     let service = GTLServiceGmail()
     lazy var sharedContext: NSManagedObjectContext = {
@@ -28,7 +24,7 @@ class GmailClientHelper {
     }
 
     func fetchMailList(label: Label, label2: String?, maxNumber: Int, completionHandler: (success: Bool, results: [GTLGmailMessage]?, error: NSError? ) -> Void ) {
-        let query = GTLQueryGmail.queryForUsersMessagesList() as GTLQueryGmail
+        let query = GTLQueryGmail.queryForUsersMessagesList() as! GTLQueryGmail
         query.maxResults = UInt(maxNumber)
         if label2 != nil {
             query.labelIds = [label.labelId, label2!]
@@ -58,7 +54,7 @@ class GmailClientHelper {
             }
         }
         for item in list {
-            let query = GTLQueryGmail.queryForUsersMessagesGet() as GTLQueryGmail
+            let query = GTLQueryGmail.queryForUsersMessagesGet() as! GTLQueryGmail
             query.identifier = item.identifier
             GmailClientHelper.sharedInstance.service.executeQuery(query) { ticket, response, error in
                 if error == nil {
@@ -83,7 +79,6 @@ class GmailClientHelper {
                         let mimeType = messagesResponse.payload.mimeType
                         var message = ""
                         var altMessage: String? = nil
-                        print(mimeType)
                         if messagesResponse.payload.parts != nil {
                             let parts = messagesResponse.payload.parts as NSArray
                             let body = parts.lastObject?.body
@@ -99,7 +94,6 @@ class GmailClientHelper {
                         }
                         let mailToQuery = self.queryForMail(id)
                         if mailToQuery.count > 0 {
-                            print("Same mail exists")
                             let mail = mailToQuery.first as Mail!
                             if mail.label != labelToBelongTo {
                                 mail.label = labelToBelongTo
@@ -128,7 +122,7 @@ class GmailClientHelper {
         fetchRequest.predicate = NSPredicate(format: "labelId == %@", labelId)
         let results = self.sharedContext.executeFetchRequest(fetchRequest, error: &error)
         if error != nil {
-            println("Error")
+            print("Error")
         }
         return results as! [Label]
     }
@@ -139,7 +133,7 @@ class GmailClientHelper {
         fetchRequest.predicate = NSPredicate(format: "id == %@", id)
         let results = GmailClientHelper.sharedInstance.sharedContext.executeFetchRequest(fetchRequest, error: &error)
         if error != nil {
-            println("Error")
+            print("Error")
         }
         return results as! [Mail]
     }

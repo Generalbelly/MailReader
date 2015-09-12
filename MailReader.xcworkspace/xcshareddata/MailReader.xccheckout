@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>F59D9E24-BD06-4D4B-BA78-B28D77017C38</string>
+	<key>IDESourceControlProjectName</key>
+	<string>MailReader</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>BFAF64A77BAC1F818F856AA9395EF10A393A3FC9</key>
+		<string>https://github.com/Generalbelly/MailReader.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>MailReader.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>BFAF64A77BAC1F818F856AA9395EF10A393A3FC9</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Generalbelly/MailReader.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>BFAF64A77BAC1F818F856AA9395EF10A393A3FC9</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>BFAF64A77BAC1F818F856AA9395EF10A393A3FC9</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MailReader</string>
+		</dict>
+	</array>
+</dict>
+</plist>

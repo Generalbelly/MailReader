@@ -1,0 +1,42 @@
+dependencies: \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/CivicInfo/Generated/GTLServiceCivicInfo.m \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Target\ Support\ Files/Google-API-Client/Google-API-Client-prefix.pch \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/CivicInfo/Generated/GTLCivicInfo.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/CivicInfo/Generated/GTLCivicInfoConstants.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/GTLDefines.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/CivicInfo/Generated/GTLCivicInfoAdministrationRegion.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Objects/GTLObject.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Utilities/GTLUtilities.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Objects/GTLDateTime.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/CivicInfo/Generated/GTLCivicInfoAdministrativeBody.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/CivicInfo/Generated/GTLCivicInfoCandidate.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/CivicInfo/Generated/GTLCivicInfoChannel.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/CivicInfo/Generated/GTLCivicInfoContest.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/CivicInfo/Generated/GTLCivicInfoDivisionSearchResponse.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/CivicInfo/Generated/GTLCivicInfoDivisionSearchResult.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/CivicInfo/Generated/GTLCivicInfoElection.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/CivicInfo/Generated/GTLCivicInfoElectionOfficial.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/CivicInfo/Generated/GTLCivicInfoElectionsQueryResponse.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/CivicInfo/Generated/GTLCivicInfoElectoralDistrict.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/CivicInfo/Generated/GTLCivicInfoGeographicDivision.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/CivicInfo/Generated/GTLCivicInfoOffice.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/CivicInfo/Generated/GTLCivicInfoOfficial.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/CivicInfo/Generated/GTLCivicInfoPollingLocation.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/CivicInfo/Generated/GTLCivicInfoRepresentativeInfoData.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/CivicInfo/Generated/GTLCivicInfoRepresentativeInfoResponse.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/CivicInfo/Generated/GTLCivicInfoSimpleAddressType.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/CivicInfo/Generated/GTLCivicInfoSource.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/CivicInfo/Generated/GTLCivicInfoVoterInfoResponse.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/CivicInfo/Generated/GTLQueryCivicInfo.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Objects/GTLQuery.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Objects/GTLUploadParameters.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Services/CivicInfo/Generated/GTLServiceCivicInfo.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Objects/GTLService.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/gtm-http-fetcher/Source/GTMHTTPFetcher.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/gtm-http-fetcher/Source/GTMHTTPFetcherService.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/gtm-http-fetcher/Source/GTMHTTPFetchHistory.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Objects/GTLBatchQuery.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Objects/GTLBatchResult.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Objects/GTLErrorObject.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Utilities/GTLFramework.h \
+  /Users/shimmennobuyoshi/Desktop/MailReader/Pods/Google-API-Client/Source/Utilities/GTLJSONParser.h

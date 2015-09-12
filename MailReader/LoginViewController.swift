@@ -16,7 +16,6 @@ class LoginViewController: UIViewController {
         didSet {
             if label != nil {
                 self.performSegueWithIdentifier("toHomeView", sender: self)
-                print("YES")
             }
         }
     }
@@ -60,7 +59,7 @@ class LoginViewController: UIViewController {
     }
 
     func fetchUnreadAndTrash() {
-        var query = GTLQueryGmail.queryForUsersLabelsList() as GTLQueryGmail
+        var query = GTLQueryGmail.queryForUsersLabelsList() as! GTLQueryGmail
         GmailClientHelper.sharedInstance.service.executeQuery(query) { ticket, response, error in
             if error == nil {
                 if let labelsResponse = response as? GTLGmailListLabelsResponse {

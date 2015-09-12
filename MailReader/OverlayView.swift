@@ -38,12 +38,10 @@ class OverlayView: UIView {
             self.imageView.image = UIImage(named: "trash")
             self.imageView.sizeThatFits(self.imageView.frame.size)
             self.imageView.center = self.center
-            println("left")
         } else {
             self.imageView.image = UIImage(named: "bookmark")
             self.imageView.sizeThatFits(self.imageView.frame.size)
             self.imageView.center = self.center
-            println("Right")
         }
     }
 

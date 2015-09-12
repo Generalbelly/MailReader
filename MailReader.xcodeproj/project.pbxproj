@@ -8,11 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		00662F361BA1B0A400F3C3B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00662F351BA1B0A400F3C3B7 /* AppDelegate.swift */; };
-		00662F381BA1B0A400F3C3B7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00662F371BA1B0A400F3C3B7 /* ViewController.swift */; };
 		00662F3B1BA1B0A400F3C3B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00662F391BA1B0A400F3C3B7 /* Main.storyboard */; };
 		00662F3D1BA1B0A400F3C3B7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00662F3C1BA1B0A400F3C3B7 /* Images.xcassets */; };
 		00662F401BA1B0A400F3C3B7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00662F3E1BA1B0A400F3C3B7 /* LaunchScreen.xib */; };
 		00662F4C1BA1B0A400F3C3B7 /* MailReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00662F4B1BA1B0A400F3C3B7 /* MailReaderTests.swift */; };
+		00662F691BA1B0DC00F3C3B7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00662F561BA1B0DC00F3C3B7 /* LoginViewController.swift */; };
+		00662F6A1BA1B0DC00F3C3B7 /* GmailClientHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00662F571BA1B0DC00F3C3B7 /* GmailClientHelper.swift */; };
+		00662F6B1BA1B0DC00F3C3B7 /* CoreDataStackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00662F581BA1B0DC00F3C3B7 /* CoreDataStackManager.swift */; };
+		00662F6C1BA1B0DC00F3C3B7 /* MailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00662F591BA1B0DC00F3C3B7 /* MailViewController.swift */; };
+		00662F6D1BA1B0DC00F3C3B7 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00662F5A1BA1B0DC00F3C3B7 /* DetailViewController.swift */; };
+		00662F6E1BA1B0DC00F3C3B7 /* DraggableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00662F5B1BA1B0DC00F3C3B7 /* DraggableView.swift */; };
+		00662F6F1BA1B0DC00F3C3B7 /* TrashTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00662F5C1BA1B0DC00F3C3B7 /* TrashTableViewController.swift */; };
+		00662F701BA1B0DC00F3C3B7 /* BookmarkTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00662F5D1BA1B0DC00F3C3B7 /* BookmarkTableViewController.swift */; };
+		00662F711BA1B0DC00F3C3B7 /* TrashTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00662F5E1BA1B0DC00F3C3B7 /* TrashTableViewCell.swift */; };
+		00662F721BA1B0DC00F3C3B7 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00662F5F1BA1B0DC00F3C3B7 /* OverlayView.swift */; };
+		00662F731BA1B0DC00F3C3B7 /* Mail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00662F601BA1B0DC00F3C3B7 /* Mail.swift */; };
+		00662F741BA1B0DC00F3C3B7 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00662F611BA1B0DC00F3C3B7 /* Label.swift */; };
+		00662F751BA1B0DC00F3C3B7 /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00662F621BA1B0DC00F3C3B7 /* Bookmark.swift */; };
+		00662F781BA1B0DC00F3C3B7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00662F651BA1B0DC00F3C3B7 /* Extensions.swift */; };
+		00662F811BA1BCB000F3C3B7 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 00662F7F1BA1BCB000F3C3B7 /* Model.xcdatamodeld */; };
+		F3D0312C3C110F44D20E3AD7 /* libPods-MailReader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC2E9928C6949C3CEA176B62 /* libPods-MailReader.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,13 +44,31 @@
 		00662F301BA1B0A400F3C3B7 /* MailReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MailReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00662F341BA1B0A400F3C3B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00662F351BA1B0A400F3C3B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		00662F371BA1B0A400F3C3B7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		00662F3A1BA1B0A400F3C3B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		00662F3C1BA1B0A400F3C3B7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		00662F3F1BA1B0A400F3C3B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		00662F451BA1B0A400F3C3B7 /* MailReaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MailReaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00662F4A1BA1B0A400F3C3B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00662F4B1BA1B0A400F3C3B7 /* MailReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailReaderTests.swift; sourceTree = "<group>"; };
+		00662F551BA1B0DB00F3C3B7 /* MailReader-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MailReader-Bridging-Header.h"; sourceTree = "<group>"; };
+		00662F561BA1B0DC00F3C3B7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		00662F571BA1B0DC00F3C3B7 /* GmailClientHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GmailClientHelper.swift; sourceTree = "<group>"; };
+		00662F581BA1B0DC00F3C3B7 /* CoreDataStackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackManager.swift; sourceTree = "<group>"; };
+		00662F591BA1B0DC00F3C3B7 /* MailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailViewController.swift; sourceTree = "<group>"; };
+		00662F5A1BA1B0DC00F3C3B7 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		00662F5B1BA1B0DC00F3C3B7 /* DraggableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraggableView.swift; sourceTree = "<group>"; };
+		00662F5C1BA1B0DC00F3C3B7 /* TrashTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrashTableViewController.swift; sourceTree = "<group>"; };
+		00662F5D1BA1B0DC00F3C3B7 /* BookmarkTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkTableViewController.swift; sourceTree = "<group>"; };
+		00662F5E1BA1B0DC00F3C3B7 /* TrashTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrashTableViewCell.swift; sourceTree = "<group>"; };
+		00662F5F1BA1B0DC00F3C3B7 /* OverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
+		00662F601BA1B0DC00F3C3B7 /* Mail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mail.swift; sourceTree = "<group>"; };
+		00662F611BA1B0DC00F3C3B7 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
+		00662F621BA1B0DC00F3C3B7 /* Bookmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
+		00662F651BA1B0DC00F3C3B7 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		00662F801BA1BCB000F3C3B7 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		254DB000FD5457BB09E2A76D /* Pods-MailReader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MailReader.release.xcconfig"; path = "Pods/Target Support Files/Pods-MailReader/Pods-MailReader.release.xcconfig"; sourceTree = "<group>"; };
+		3E8592B7CA359798A573026C /* Pods-MailReader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MailReader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MailReader/Pods-MailReader.debug.xcconfig"; sourceTree = "<group>"; };
+		BC2E9928C6949C3CEA176B62 /* libPods-MailReader.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MailReader.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3D0312C3C110F44D20E3AD7 /* libPods-MailReader.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,9 +93,12 @@
 		00662F271BA1B0A400F3C3B7 = {
 			isa = PBXGroup;
 			children = (
+				00662F7F1BA1BCB000F3C3B7 /* Model.xcdatamodeld */,
 				00662F321BA1B0A400F3C3B7 /* MailReader */,
 				00662F481BA1B0A400F3C3B7 /* MailReaderTests */,
 				00662F311BA1B0A400F3C3B7 /* Products */,
+				F25E2E2922BC88C0870C0E16 /* Pods */,
+				CCF4609AFE877D18E70D2B9B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,11 +115,25 @@
 			isa = PBXGroup;
 			children = (
 				00662F351BA1B0A400F3C3B7 /* AppDelegate.swift */,
-				00662F371BA1B0A400F3C3B7 /* ViewController.swift */,
+				00662F561BA1B0DC00F3C3B7 /* LoginViewController.swift */,
+				00662F571BA1B0DC00F3C3B7 /* GmailClientHelper.swift */,
+				00662F581BA1B0DC00F3C3B7 /* CoreDataStackManager.swift */,
+				00662F591BA1B0DC00F3C3B7 /* MailViewController.swift */,
+				00662F5A1BA1B0DC00F3C3B7 /* DetailViewController.swift */,
+				00662F5B1BA1B0DC00F3C3B7 /* DraggableView.swift */,
+				00662F5C1BA1B0DC00F3C3B7 /* TrashTableViewController.swift */,
+				00662F5D1BA1B0DC00F3C3B7 /* BookmarkTableViewController.swift */,
+				00662F5E1BA1B0DC00F3C3B7 /* TrashTableViewCell.swift */,
+				00662F5F1BA1B0DC00F3C3B7 /* OverlayView.swift */,
+				00662F601BA1B0DC00F3C3B7 /* Mail.swift */,
+				00662F611BA1B0DC00F3C3B7 /* Label.swift */,
+				00662F621BA1B0DC00F3C3B7 /* Bookmark.swift */,
+				00662F651BA1B0DC00F3C3B7 /* Extensions.swift */,
 				00662F391BA1B0A400F3C3B7 /* Main.storyboard */,
 				00662F3C1BA1B0A400F3C3B7 /* Images.xcassets */,
 				00662F3E1BA1B0A400F3C3B7 /* LaunchScreen.xib */,
 				00662F331BA1B0A400F3C3B7 /* Supporting Files */,
+				00662F551BA1B0DB00F3C3B7 /* MailReader-Bridging-Header.h */,
 			);
 			path = MailReader;
 			sourceTree = "<group>";
@@ -112,6 +163,23 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		CCF4609AFE877D18E70D2B9B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BC2E9928C6949C3CEA176B62 /* libPods-MailReader.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F25E2E2922BC88C0870C0E16 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3E8592B7CA359798A573026C /* Pods-MailReader.debug.xcconfig */,
+				254DB000FD5457BB09E2A76D /* Pods-MailReader.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -119,9 +187,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00662F4F1BA1B0A400F3C3B7 /* Build configuration list for PBXNativeTarget "MailReader" */;
 			buildPhases = (
+				CA89B288676858E147661F01 /* Check Pods Manifest.lock */,
 				00662F2C1BA1B0A400F3C3B7 /* Sources */,
 				00662F2D1BA1B0A400F3C3B7 /* Frameworks */,
 				00662F2E1BA1B0A400F3C3B7 /* Resources */,
+				E5EEECE2F6FBCDE7CC39D71C /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -207,13 +277,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		CA89B288676858E147661F01 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E5EEECE2F6FBCDE7CC39D71C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MailReader/Pods-MailReader-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		00662F2C1BA1B0A400F3C3B7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00662F381BA1B0A400F3C3B7 /* ViewController.swift in Sources */,
+				00662F731BA1B0DC00F3C3B7 /* Mail.swift in Sources */,
+				00662F6E1BA1B0DC00F3C3B7 /* DraggableView.swift in Sources */,
+				00662F6A1BA1B0DC00F3C3B7 /* GmailClientHelper.swift in Sources */,
+				00662F6F1BA1B0DC00F3C3B7 /* TrashTableViewController.swift in Sources */,
+				00662F6B1BA1B0DC00F3C3B7 /* CoreDataStackManager.swift in Sources */,
+				00662F751BA1B0DC00F3C3B7 /* Bookmark.swift in Sources */,
+				00662F741BA1B0DC00F3C3B7 /* Label.swift in Sources */,
+				00662F721BA1B0DC00F3C3B7 /* OverlayView.swift in Sources */,
+				00662F711BA1B0DC00F3C3B7 /* TrashTableViewCell.swift in Sources */,
+				00662F691BA1B0DC00F3C3B7 /* LoginViewController.swift in Sources */,
+				00662F781BA1B0DC00F3C3B7 /* Extensions.swift in Sources */,
+				00662F811BA1BCB000F3C3B7 /* Model.xcdatamodeld in Sources */,
+				00662F6D1BA1B0DC00F3C3B7 /* DetailViewController.swift in Sources */,
+				00662F701BA1B0DC00F3C3B7 /* BookmarkTableViewController.swift in Sources */,
 				00662F361BA1B0A400F3C3B7 /* AppDelegate.swift in Sources */,
+				00662F6C1BA1B0DC00F3C3B7 /* MailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,21 +457,28 @@
 		};
 		00662F501BA1B0A400F3C3B7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3E8592B7CA359798A573026C /* Pods-MailReader.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = MailReader/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MailReader/MailReader-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		00662F511BA1B0A400F3C3B7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 254DB000FD5457BB09E2A76D /* Pods-MailReader.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = MailReader/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MailReader/MailReader-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -411,6 +535,7 @@
 				00662F511BA1B0A400F3C3B7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		00662F521BA1B0A400F3C3B7 /* Build configuration list for PBXNativeTarget "MailReaderTests" */ = {
 			isa = XCConfigurationList;
@@ -419,8 +544,22 @@
 				00662F541BA1B0A400F3C3B7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		00662F7F1BA1BCB000F3C3B7 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				00662F801BA1BCB000F3C3B7 /* Model.xcdatamodel */,
+			);
+			currentVersion = 00662F801BA1BCB000F3C3B7 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 00662F281BA1B0A400F3C3B7 /* Project object */;
 }

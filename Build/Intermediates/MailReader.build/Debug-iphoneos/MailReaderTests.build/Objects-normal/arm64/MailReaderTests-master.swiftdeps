@@ -1,0 +1,4 @@
+version: "Apple Swift version 1.2 (swiftlang-602.0.53.1 clang-602.0.53)"
+options: "c43f19ef45a7e9b8508ddfb3d50a0c09"
+inputs: 
+- "/Users/shimmennobuyoshi/Desktop/MailReader/MailReaderTests/MailReaderTests.swift"

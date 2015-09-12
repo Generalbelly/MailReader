@@ -32,17 +32,16 @@ class BookmarkTableViewController: UITableViewController, DZNEmptyDataSetSource,
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.barTintColor = UIColor.hex("#06d0e5", alpha: 1.0)
-        self.navigationController?.navigationBar.translucent = false
+        self.tableView.emptyDataSetSource = self
+        self.tableView.emptyDataSetDelegate = self
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.bookmarks = fetchAllBookmarks()
         if self.bookmarks.isEmpty {
-            self.tableView.emptyDataSetSource = self
-            self.tableView.emptyDataSetDelegate = self
             self.tableView.tableFooterView = UIView()
+            self.tableView.reloadEmptyDataSet()
         } else {
             self.tableView.estimatedRowHeight = tableView.rowHeight
             self.tableView.rowHeight = UITableViewAutomaticDimension
