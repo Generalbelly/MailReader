@@ -41,7 +41,6 @@ class Mail: NSManagedObject {
         self.subject = dict["subject"] as! String
         self.mimeType = dict["mimeType"] as! String
         self.message = dict["message"] as! String
-        println("mailAdded")
     }
 
 }

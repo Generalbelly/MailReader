@@ -4,25 +4,25 @@ nominals:
 - "CSo7UIColor"
 class-members:
 top-level:
-- "CGFloat"
-- !private "UnicodeScalarType"
-- !private "&"
-- !private "UInt32"
 - !private "/"
-- "NSString"
+- !private "&"
 - !private "NSScanner"
 - "UIColor"
-- !private "StringLiteralType"
 - !private "String"
 - !private ">>"
+- !private "StringLiteralType"
 - !private "print"
+- !private "UInt32"
+- !private "UnicodeScalarType"
+- "CGFloat"
+- "NSString"
 member-access:
 - "CSo8NSObject"
 - !private "CSo9NSScanner"
-- !private "Sb"
-- "CSo7UIColor"
 - !private "V12CoreGraphics7CGFloat"
+- !private "Sb"
 - !private "CSo8NSString"
+- "CSo7UIColor"
 dynamic-lookup:
 cross-module:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/Swift.swiftmodule"

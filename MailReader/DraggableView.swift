@@ -26,6 +26,12 @@ class DraggableView: WKWebView, UIGestureRecognizerDelegate {
             }
         }
     }
+    var bookmarkedUrlString: String? {
+        didSet {
+            let url = NSURL(string: bookmarkedUrlString!)
+            self.loadRequest(NSURLRequest(URL: url!))
+        }
+    }
     var topMail = false {
         didSet {
             if topMail {
@@ -188,11 +194,7 @@ class DraggableView: WKWebView, UIGestureRecognizerDelegate {
     }
 
     func cardAway(x: CGFloat) {
-        if x < 500 {
-            self.changeLabels(self.overlayView.mode!)
-        } else {
-            self.changeLabels(self.overlayView.mode!)
-        }
+        self.changeLabels(self.overlayView.mode!)
         self.userLeaving = true
         self.delegate?.cardCounter(self, swiped: true)
         if self.yDistance == nil {
@@ -222,42 +224,33 @@ class DraggableView: WKWebView, UIGestureRecognizerDelegate {
     func changeLabels(mode: OverlayMode) {
         let query = GTLQueryGmail.queryForUsersMessagesModify() as! GTLQueryGmail
         query.identifier = self.messageId
+        query.removeLabelIds = ["UNREAD", "INBOX"]
         if mode == .Left {
             query.addLabelIds = ["TRASH"]
-            query.removeLabelIds = ["UNREAD", "INBOX"]
         } else {
-            query.removeLabelIds = ["UNREAD"]
+            query.addLabelIds = [GmailClientHelper.sharedInstance.mailReaderId]
         }
         GmailClientHelper.sharedInstance.service.executeQuery(query) { ticket, response, error in
             if error == nil {
-                self.deleteMailFromCoreData()
                 if mode == .Right {
                     self.addMailToBookmarks()
                 }
+                self.deleteMailFromCoreData()
                 CoreDataStackManager.sharedInstance.saveContext()
             }
         }
     }
 
     func deleteMailFromCoreData() {
-        var error: NSError?
-        var fetchRequest = NSFetchRequest(entityName: "Mail")
-        fetchRequest.predicate = NSPredicate(format: "id == %@", self.messageId)
-        let results = self.sharedContext.executeFetchRequest(fetchRequest, error: &error) as! [Mail]
-        if error != nil {
-            println("Error")
-        }
-        self.sharedContext.deleteObject(results.first!)
+        let mail = GmailClientHelper.sharedInstance.queryForMail(self.messageId).first!
+        self.sharedContext.deleteObject(mail)
     }
 
     func addMailToBookmarks() {
-        var subject = ""
-        if let title = self.dict["subject"] as String! {
-            subject = title
-        }
+        let title = self.dict["subject"]
         let time = NSDate()
         let uid = NSUUID().UUIDString
-        let dict: [String: AnyObject] = ["title": subject, "date": time, "html": self.htmlString!, "id": uid]
+        let dict: [String: AnyObject] = ["title": title!, "date": time, "content": self.htmlString!, "id": uid]
         let bookmark = Bookmark(dict: dict, context: self.sharedContext)
     }
 

@@ -19,6 +19,7 @@ class LoginViewController: UIViewController {
             }
         }
     }
+    var mailReaderLabelExist = false
     lazy var sharedContext: NSManagedObjectContext = {
         return CoreDataStackManager.sharedInstance.managedObjectContext!
     }()
@@ -38,6 +39,12 @@ class LoginViewController: UIViewController {
                 self.fetchUnreadAndTrash()
             } else {
                 self.label = queryArray.first
+                let mailReader = GmailClientHelper.sharedInstance.queryForLabel("MailReader")
+                if mailReader.count == 0 {
+                    self.creaLabelInGmail()
+                } else {
+                    GmailClientHelper.sharedInstance.mailReaderId = mailReader.first!.id
+                }
             }
         }
     }
@@ -52,9 +59,9 @@ class LoginViewController: UIViewController {
             } else {
                 GmailClientHelper.sharedInstance.service.authorizer = authResult
                 self.dismissViewControllerAnimated(true, completion: nil)
+                self.fetchUnreadAndTrash()
             }
         }
-        self.fetchUnreadAndTrash()
         return authController
     }
 
@@ -80,10 +87,20 @@ class LoginViewController: UIViewController {
                                     let dict: [String: AnyObject] = ["id": id, "labelId": labelId]
                                     let label = Label(dict: dict, context: self.sharedContext)
                                 }
+                            } else if labelId == "MailReader" {
+                                if queryArray.count == 0 {
+                                    let dict: [String: AnyObject] = ["id": id, "labelId": labelId]
+                                    let label = Label(dict: dict, context: self.sharedContext)
+                                }
+                                GmailClientHelper.sharedInstance.mailReaderId = id
+                                self.mailReaderLabelExist = true
                             }
                         }
                         CoreDataStackManager.sharedInstance.saveContext()
                     }
+                }
+                if !self.mailReaderLabelExist {
+                    self.creaLabelInGmail()
                 }
             } else {
                 self.showAlert("Error", message: error!.localizedDescription)
@@ -102,13 +119,30 @@ class LoginViewController: UIViewController {
     }
 
     func showAlert(title: String, message: String) {
-        var alert: UIAlertView
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
         let action = UIAlertAction(title: "OK", style: .Default) { (action) in
-            self.dismissViewControllerAnimated(true, completion: nil)
+            alertController.dismissViewControllerAnimated(true, completion: nil)
         }
         alertController.addAction(action)
         self.presentViewController(alertController, animated: true, completion: nil)
+    }
+
+    func creaLabelInGmail() {
+        let newLabel = GTLGmailLabel()
+        newLabel.name = "MailReader"
+        let query = GTLQueryGmail.queryForUsersLabelsCreate() as! GTLQueryGmail
+        query.label = newLabel
+        GmailClientHelper.sharedInstance.service.executeQuery(query) { ticket, response, error in
+            if error != nil {
+                self.showAlert("Error", message: error!.localizedDescription)
+            } else {
+                if let res = response as? GTLGmailLabel {
+                    let id = res.identifier
+                     GmailClientHelper.sharedInstance.mailReaderId = id
+                }
+            }
+        }
+
     }
 
 }

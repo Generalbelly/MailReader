@@ -9,14 +9,14 @@ class-members:
 - "testPerformanceExample"
 - "tearDown"
 top-level:
-- !private "BooleanLiteralType"
-- !private "XCTAssert"
 - !private "StringLiteralType"
+- !private "XCTAssert"
+- !private "BooleanLiteralType"
 - "XCTestCase"
 member-access:
-- "CSo6XCTest"
-- "CSo10XCTestCase"
 - "PSs9AnyObject"
+- "CSo10XCTestCase"
+- "CSo6XCTest"
 - !private "C15MailReaderTests15MailReaderTests"
 - "CSo8NSObject"
 dynamic-lookup:

@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    lazy var sharedContext: NSManagedObjectContext = {
+        return CoreDataStackManager.sharedInstance.managedObjectContext!
+    }()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -32,6 +35,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+            let trashLabel = GmailClientHelper.sharedInstance.queryForLabel("TRASH").first!
+            let mails = GmailClientHelper.sharedInstance.fetchAllMails(trashLabel)
+            if mails.count > 0 {
+                for item in mails {
+                    self.sharedContext.deleteObject(item)
+                }
+                CoreDataStackManager.sharedInstance.saveContext()
+            }
+        }
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
@@ -45,7 +58,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
 
 }
 

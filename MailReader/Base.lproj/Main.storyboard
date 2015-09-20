@@ -52,7 +52,7 @@
                             <constraint firstItem="sAc-J6-4wQ" firstAttribute="top" secondItem="ekc-aS-tsG" secondAttribute="bottom" constant="8" symbolic="YES" id="yRh-Te-jm0"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Unread" id="key-vl-16B"/>
+                    <navigationItem key="navigationItem" title="Unread" id="kSw-Uz-QMT"/>
                     <connections>
                         <outlet property="nomoreMessage" destination="sAc-J6-4wQ" id="Fvt-hD-Iwu"/>
                         <outlet property="reloadButton" destination="Vfe-di-CBW" id="pZN-bE-hPh"/>
@@ -135,7 +135,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NvF-y3-Ymr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5604" y="1764"/>
+            <point key="canvasLocation" x="5610" y="1764"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="9Fk-lr-4TX">
@@ -170,7 +170,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <segue destination="mx8-NC-kTi" kind="show" identifier="toHomeView" id="IMP-aC-jv2"/>
+                        <segue destination="mx8-NC-kTi" kind="presentation" identifier="toHomeView" id="IMP-aC-jv2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zU8-gI-dsp" sceneMemberID="firstResponder"/>
@@ -311,6 +311,6 @@
         <image name="trashButton" width="17" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zkh-qu-ELT"/>
+        <segue reference="Lej-K6-ozI"/>
     </inferredMetricsTieBreakers>
 </document>

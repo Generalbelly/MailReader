@@ -22,7 +22,6 @@ class TrashTableViewController: UITableViewController, MGSwipeTableCellDelegate 
     
     var hud: MBProgressHUD!
     var selectedMail: Mail?
-    var reloaded = false
 
     // when user scroll to bottom, these are needed to figure out which mails are new (user doesn't see yet)
     var timesOfScrollingToBottom = 1
@@ -37,8 +36,6 @@ class TrashTableViewController: UITableViewController, MGSwipeTableCellDelegate 
     var mailsInTrash = [Mail]() {
         didSet {
             dispatch_async(dispatch_get_main_queue()){
-                print("\(self.mailsInTrash.count)\n")
-                print("\(self.mailsCounted)\n")
                 if self.mailsInTrash.count == self.mailsCounted {
                     self.reloadData()
                 } else if self.reason == .FirstTime {
@@ -47,12 +44,12 @@ class TrashTableViewController: UITableViewController, MGSwipeTableCellDelegate 
             }
         }
     }
+    var hudIsAdded = false
     var label: Label!
     lazy var sharedContext: NSManagedObjectContext = {
         return CoreDataStackManager.sharedInstance.managedObjectContext!
     }()
     @IBAction func refresh(sender: UIRefreshControl) {
-        self.reloaded = true
         self.loadMails(LoadingReasons.Reloaded)
     }
 
@@ -76,22 +73,14 @@ class TrashTableViewController: UITableViewController, MGSwipeTableCellDelegate 
         }
     }
 
-    override func viewDidDisappear(animated: Bool) {
-        super.viewDidDisappear(animated)
-//        for item in self.mailsInTrash {
-//            self.sharedContext.deleteObject(item)
-//        }
-//        self.mailsInTrash.removeAll()
-//        CoreDataStackManager.sharedInstance.saveContext()
-    }
-
     func reloadData() {
         self.oldestMailHistoryId = self.mailsInTrash.last?.historyId as! Int
         self.newestMailHistoryId = self.mailsInTrash.first?.historyId as! Int
         self.tableView.reloadData()
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
-        if self.hud != nil {
+        if self.hudIsAdded {
             self.hud.hide(true)
+            self.hudIsAdded = false
         }
         if self.refreshControl!.refreshing == true {
             self.refreshControl!.endRefreshing()
@@ -101,6 +90,7 @@ class TrashTableViewController: UITableViewController, MGSwipeTableCellDelegate 
     func setupHUD() {
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         self.hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        self.hudIsAdded = true
         self.hud.labelText = "Loading"
     }
 
@@ -140,6 +130,7 @@ class TrashTableViewController: UITableViewController, MGSwipeTableCellDelegate 
                                     self.mailsCounted = self.mailsInTrash.count + self.newMails.count
                                     if self.newMails.count == 0 {
                                         self.hud.hide(true)
+                                        self.hudIsAdded = false
                                         self.refreshControl!.endRefreshing()
                                     } else {
                                         for item in self.newMails.reverse() {
@@ -154,7 +145,6 @@ class TrashTableViewController: UITableViewController, MGSwipeTableCellDelegate 
                                         }
                                     }
                                     self.mailsCounted = self.mailsInTrash.count + self.newMails.count
-                                    print("NEWMAIL is\(self.newMails.count)")
                                     for item in self.newMails {
                                         self.mailsInTrash.append(item)
                                     }
@@ -195,7 +185,7 @@ class TrashTableViewController: UITableViewController, MGSwipeTableCellDelegate 
     }
 
     func swipeTableCell(cell: MGSwipeTableCell!, swipeButtonsForDirection direction: MGSwipeDirection, swipeSettings: MGSwipeSettings!, expansionSettings: MGSwipeExpansionSettings!) -> [AnyObject]! {
-        swipeSettings.transition = MGSwipeTransition.Border
+        swipeSettings.transition = MGSwipeTransition.ClipCenter
         let indexPath = self.tableView.indexPathForCell(cell)
         if direction == MGSwipeDirection.LeftToRight {
             let button = MGSwipeButton(title: "UNREAD", backgroundColor: UIColor.hex("64b6ac", alpha: 1.0)){ sender in

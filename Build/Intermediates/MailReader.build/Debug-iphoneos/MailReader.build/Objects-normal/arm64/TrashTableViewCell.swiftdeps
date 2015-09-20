@@ -4,19 +4,19 @@ provides:
 nominals:
 - "C10MailReader18TrashTableViewCell"
 class-members:
-- "subject"
 - "snippet"
 - "from"
+- "subject"
 top-level:
-- "UILabel"
 - "MGSwipeTableCell"
+- "UILabel"
 member-access:
-- "CSo6UIView"
-- "CSo8NSObject"
-- "C10MailReader18TrashTableViewCell"
-- "CSo16MGSwipeTableCell"
 - "CSo11UIResponder"
 - "CSo15UITableViewCell"
+- "C10MailReader18TrashTableViewCell"
+- "CSo6UIView"
+- "CSo16MGSwipeTableCell"
+- "CSo8NSObject"
 - "PSs9AnyObject"
 dynamic-lookup:
 cross-module:

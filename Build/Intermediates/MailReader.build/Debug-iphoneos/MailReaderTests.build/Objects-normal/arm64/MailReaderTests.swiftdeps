@@ -4,21 +4,21 @@ provides:
 nominals:
 - "C15MailReaderTests15MailReaderTests"
 class-members:
-- "tearDown"
 - "testPerformanceExample"
 - "setUp"
 - "testExample"
+- "tearDown"
 top-level:
-- "XCTestCase"
 - !private "StringLiteralType"
-- !private "XCTAssert"
 - !private "BooleanLiteralType"
+- "XCTestCase"
+- !private "XCTAssert"
 member-access:
-- "CSo6XCTest"
-- !private "C15MailReaderTests15MailReaderTests"
-- "CSo10XCTestCase"
-- "PSs9AnyObject"
 - "CSo8NSObject"
+- "CSo10XCTestCase"
+- !private "C15MailReaderTests15MailReaderTests"
+- "PSs9AnyObject"
+- "CSo6XCTest"
 dynamic-lookup:
 cross-module:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/Swift.swiftmodule"

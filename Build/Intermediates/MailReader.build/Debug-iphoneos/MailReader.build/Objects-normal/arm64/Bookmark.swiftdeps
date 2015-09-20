@@ -5,22 +5,23 @@ nominals:
 - "C10MailReader8Bookmark"
 class-members:
 - "date"
+- "id"
 - "title"
 - "html"
 top-level:
-- "NSEntityDescription"
 - "NSManagedObjectContext"
-- "AnyObject"
-- !private "StringLiteralType"
-- "NSDate"
 - "NSManagedObject"
+- "NSDate"
+- "NSEntityDescription"
+- "AnyObject"
 - "String"
+- !private "StringLiteralType"
 member-access:
-- !private "VSs10Dictionary"
 - "C10MailReader8Bookmark"
-- "PSs9AnyObject"
-- "CSo8NSObject"
 - "CSo15NSManagedObject"
+- "CSo8NSObject"
+- !private "VSs10Dictionary"
+- "PSs9AnyObject"
 - !private "CSo19NSEntityDescription"
 dynamic-lookup:
 cross-module:

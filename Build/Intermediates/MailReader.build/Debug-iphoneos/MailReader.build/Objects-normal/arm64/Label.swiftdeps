@@ -4,24 +4,24 @@ provides:
 nominals:
 - "C10MailReader5Label"
 class-members:
+- "labelId"
 - "id"
 - "mails"
-- "labelId"
 top-level:
 - "String"
-- "AnyObject"
 - "NSEntityDescription"
 - "NSManagedObject"
 - !private "StringLiteralType"
 - "NSManagedObjectContext"
 - "Mail"
+- "AnyObject"
 member-access:
-- !private "CSo19NSEntityDescription"
-- "CSo15NSManagedObject"
-- !private "VSs10Dictionary"
-- "PSs9AnyObject"
-- "CSo8NSObject"
 - "C10MailReader5Label"
+- "CSo15NSManagedObject"
+- "PSs9AnyObject"
+- !private "VSs10Dictionary"
+- !private "CSo19NSEntityDescription"
+- "CSo8NSObject"
 dynamic-lookup:
 cross-module:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/Swift.swiftmodule"

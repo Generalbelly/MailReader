@@ -8,9 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		00662F361BA1B0A400F3C3B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00662F351BA1B0A400F3C3B7 /* AppDelegate.swift */; };
-		00662F3B1BA1B0A400F3C3B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00662F391BA1B0A400F3C3B7 /* Main.storyboard */; };
 		00662F3D1BA1B0A400F3C3B7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00662F3C1BA1B0A400F3C3B7 /* Images.xcassets */; };
-		00662F401BA1B0A400F3C3B7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00662F3E1BA1B0A400F3C3B7 /* LaunchScreen.xib */; };
 		00662F4C1BA1B0A400F3C3B7 /* MailReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00662F4B1BA1B0A400F3C3B7 /* MailReaderTests.swift */; };
 		00662F691BA1B0DC00F3C3B7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00662F561BA1B0DC00F3C3B7 /* LoginViewController.swift */; };
 		00662F6A1BA1B0DC00F3C3B7 /* GmailClientHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00662F571BA1B0DC00F3C3B7 /* GmailClientHelper.swift */; };
@@ -27,6 +25,8 @@
 		00662F751BA1B0DC00F3C3B7 /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00662F621BA1B0DC00F3C3B7 /* Bookmark.swift */; };
 		00662F781BA1B0DC00F3C3B7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00662F651BA1B0DC00F3C3B7 /* Extensions.swift */; };
 		00662F811BA1BCB000F3C3B7 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 00662F7F1BA1BCB000F3C3B7 /* Model.xcdatamodeld */; };
+		00FCAB551BA8D3130091D6D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00662F391BA1B0A400F3C3B7 /* Main.storyboard */; };
+		00FCAB561BA8D3130091D6D8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00662F3E1BA1B0A400F3C3B7 /* LaunchScreen.xib */; };
 		F3D0312C3C110F44D20E3AD7 /* libPods-MailReader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC2E9928C6949C3CEA176B62 /* libPods-MailReader.a */; };
 /* End PBXBuildFile section */
 
@@ -262,8 +262,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00662F3B1BA1B0A400F3C3B7 /* Main.storyboard in Resources */,
-				00662F401BA1B0A400F3C3B7 /* LaunchScreen.xib in Resources */,
+				00FCAB551BA8D3130091D6D8 /* Main.storyboard in Resources */,
+				00FCAB561BA8D3130091D6D8 /* LaunchScreen.xib in Resources */,
 				00662F3D1BA1B0A400F3C3B7 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -450,6 +450,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};

@@ -22,13 +22,15 @@ class MailViewController: UIViewController, DraggableViewDelegate, WKNavigationD
     var label: Label! { didSet { self.labelId = label.labelId } }
     var labelId: String?
     var hud: MBProgressHUD!
+    var isHudAdded = false
     var pageUrl: String?
     var pageTitle: String?
-    var showingAlert = false
-    var cardsToLoad = 10
+    var cardsToLoad = 15
     var counter = 0
     var readerButton = UIBarButtonItem()
     var infoButton = UIBarButtonItem()
+    var flagButton = UIBarButtonItem()
+    var flagTapped = false
     var numberOfCards = 0 { didSet { counter = numberOfCards - 1 } }
     var cardsStack = [DraggableView]() {
         didSet {
@@ -77,17 +79,19 @@ class MailViewController: UIViewController, DraggableViewDelegate, WKNavigationD
     override func viewDidLoad() {
         self.setUpButtons()
         super.viewDidLoad()
-        self.setupHUD()
         if self.selectedMail != nil {
+            self.setupHUD()
             self.navigationItem.title = "Trash"
             self.createCard(self.selectedMail!, bookmark: nil)
         } else if self.selectedBookmark != nil {
+            self.setupHUD()
             self.navigationItem.title = "Bookmark"
             self.createCard(nil, bookmark: self.selectedBookmark)
         } else {
             if self.label.mails.isEmpty {
                 self.loadMails()
             } else {
+                self.setupHUD()
                 self.numberOfCards = self.label.mails.count
                 for item in self.label.mails {
                     self.createCard(item, bookmark: nil)
@@ -110,11 +114,15 @@ class MailViewController: UIViewController, DraggableViewDelegate, WKNavigationD
         GmailClientHelper.sharedInstance.fetchMailList(self.label, label2: "INBOX",maxNumber: self.cardsToLoad) { success, results, error in
             if success && results != nil {
                 if results?.count > 0 {
-                    self.numberOfCards = results!.count
                     GmailClientHelper.sharedInstance.fetchMail(results!, labelToBelongTo: self.label) { success, error, cardsToMake in
                         if success {
-                            for item in cardsToMake! {
-                                self.createCard(item, bookmark: nil)
+                            if cardsToMake != nil {
+                                self.numberOfCards = cardsToMake!.count
+                                for item in cardsToMake! {
+                                    self.createCard(item, bookmark: nil)
+                                }
+                            } else {
+                                self.noUnreadMails()
                             }
                         } else {
                             self.showAlert("Error", message: error!.localizedDescription)
@@ -126,33 +134,36 @@ class MailViewController: UIViewController, DraggableViewDelegate, WKNavigationD
             } else if error != nil {
                 self.showAlert("Error", message: error!.localizedDescription)
             } else {
-                self.hud.hide(true)
-                self.smile.hidden = false
-                self.nomoreMessage.hidden = false
-                self.readerButton.enabled = false
-                self.infoButton.enabled = false
+                self.noUnreadMails()
             }
         }
+    }
+
+    func noUnreadMails() {
+        self.hud.hide(true)
+        self.isHudAdded = false
+        self.smile.hidden = false
+        self.nomoreMessage.hidden = false
+        self.readerButton.enabled = false
+        self.infoButton.enabled = false
+        self.flagButton.enabled = false
     }
 
     func setupHUD() {
         self.hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         self.hud.mode = MBProgressHUDMode.AnnularDeterminate
         self.hud.labelText = "Loading"
-        self.hud.hidden = false
+        self.isHudAdded = true
     }
 
     func disableButton() {
         self.reloadButton.hidden = false
         self.readerButton.enabled = false
         self.infoButton.enabled = false
+        self.flagButton.enabled = false
     }
 
     func setUpButtons() {
-
-        let pointY = self.view.frame.size.height - 200
-        let borderWith: CGFloat = 1.5
-        let borderColor = UIColor.hex("#06d0e5", alpha: 1.0).CGColor
 
         reloadButton.layer.masksToBounds = true
         reloadButton.layer.cornerRadius = 0.5 * reloadButton.bounds.size.width
@@ -168,10 +179,17 @@ class MailViewController: UIViewController, DraggableViewDelegate, WKNavigationD
         readerButton = UIBarButtonItem(image: readerIcon, style: .Plain, target: self, action: "tapped:")
         readerButton.tag = 1
         readerButton.enabled = false
+
+        // flag button
+        if self.selectedMail == nil && self.selectedBookmark == nil {
+            let flagIcon = UIImage(named: "flag")
+            flagButton = UIBarButtonItem(image: flagIcon, style: .Plain, target: self, action: "tapped:")
+            flagButton.tag = 2
+            flagButton.enabled = false
+            self.navigationItem.leftBarButtonItem = flagButton
+        }
         
         self.navigationItem.rightBarButtonItems = [readerButton, infoButton]
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-
     }
 
     func tapped(button: UIButton) {
@@ -190,9 +208,11 @@ class MailViewController: UIViewController, DraggableViewDelegate, WKNavigationD
                 } else if draggableView.enlarged == false && draggableView.altMessageString != nil {
                     draggableView.enlarged = true
                 } else {
-                    self.showingAlert = true
-                    self.performSegueWithIdentifier("detail", sender: self)
+                    self.showAlert("Error", message: "Sorry, there is no plain text available for this email")
                 }
+            case 2:
+                self.flagTapped = true
+                self.showAlert("Flagging", message: "If you flag this mail, mail from this address will become hidden in this app. The mails will remain and be accessable in your gmail account and app.")
             default:
             break
             }
@@ -206,12 +226,7 @@ class MailViewController: UIViewController, DraggableViewDelegate, WKNavigationD
         }
         if let dvc = destination as? DetailViewController {
             if segue.identifier == "detail" {
-                if self.showingAlert {
-                    dvc.showingAlert = true
-                    self.showingAlert = false
-                } else {
-                    dvc.pageUrl = self.pageUrl!
-                }
+                dvc.pageUrl = self.pageUrl!
             }
         }
     }
@@ -221,10 +236,11 @@ class MailViewController: UIViewController, DraggableViewDelegate, WKNavigationD
     func cardLoadingCheck(view: DraggableView, completed: Bool) {
         if view.tag == self.counter && completed == true {
             self.hud.hide(true)
-            self.hud.hidden = true
+            self.isHudAdded = false
             if self.selectedBookmark == nil {
                 self.readerButton.enabled = true
                 self.infoButton.enabled = true
+                self.flagButton.enabled = true
             }
         }
     }
@@ -240,7 +256,7 @@ class MailViewController: UIViewController, DraggableViewDelegate, WKNavigationD
     }
 
     func webView(webView: WKWebView, decidePolicyForNavigationResponse navigationResponse: WKNavigationResponse, decisionHandler: (WKNavigationResponsePolicy) -> Void) {
-        if webView.tag == self.counter && self.hud.hidden {
+        if webView.tag == self.counter && !self.isHudAdded {
             self.pageUrl = webView.URL?.absoluteString
             self.performSegueWithIdentifier("detail", sender: self)
             decisionHandler(WKNavigationResponsePolicy.Cancel)
@@ -305,18 +321,42 @@ class MailViewController: UIViewController, DraggableViewDelegate, WKNavigationD
             cardView.historyId = mail!.historyId as Int
         } else {
             cardView = DraggableView(frame: cardFrame, configuration: config, dict: nil)
-            cardView.htmlString = self.selectedBookmark?.html
+            cardView.bookmarkedUrlString = self.selectedBookmark?.content
         }
         self.cardsStack.append(cardView)
     }
 
     func showAlert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        let action = UIAlertAction(title: "OK", style: .Default) { (action) in
-            self.dismissViewControllerAnimated(true, completion: nil)
+        let ok = UIAlertAction(title: "OK", style: .Default) { (action) in
+            if self.flagTapped {
+                var sender = ""
+                let index = self.view.subviews.count - 1
+                if let draggableView = self.view.subviews[index] as? DraggableView {
+                    sender = draggableView.dict["from"] as String!
+                }
+                if NSFileManager.defaultManager().fileExistsAtPath(GmailClientHelper.sharedInstance.filePath) {
+                    if let dict = NSKeyedUnarchiver.unarchiveObjectWithFile(GmailClientHelper.sharedInstance.filePath) as? [String: [String]] {
+                        var flaggedSenders = dict["flaggedSenders"]
+                        flaggedSenders!.append(sender)
+                        let updatedDict = ["flaggedSenders": flaggedSenders!]
+                        NSKeyedArchiver.archiveRootObject(updatedDict, toFile: GmailClientHelper.sharedInstance.filePath)
+                    }
+                } else {
+                    let dict = ["flaggedSenders": [sender]]
+                    NSKeyedArchiver.archiveRootObject(dict, toFile: GmailClientHelper.sharedInstance.filePath)
+                }
+            }
+            self.flagTapped = false
+            alertController.dismissViewControllerAnimated(true, completion: nil)
         }
-        alertController.addAction(action)
+        if self.flagTapped {
+            let cancel = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
+            alertController.dismissViewControllerAnimated(true, completion: nil)
+            }
+            alertController.addAction(cancel)
+        }
+        alertController.addAction(ok)
         self.presentViewController(alertController, animated: true, completion: nil)
     }
-
 }

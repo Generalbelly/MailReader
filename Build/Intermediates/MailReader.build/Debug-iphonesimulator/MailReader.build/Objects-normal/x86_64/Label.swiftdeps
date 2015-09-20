@@ -8,20 +8,20 @@ class-members:
 - "id"
 - "labelId"
 top-level:
-- "AnyObject"
-- "NSEntityDescription"
-- "NSManagedObject"
 - !private "StringLiteralType"
-- "NSManagedObjectContext"
+- "NSManagedObject"
 - "String"
+- "AnyObject"
 - "Mail"
+- "NSEntityDescription"
+- "NSManagedObjectContext"
 member-access:
-- "PSs9AnyObject"
 - !private "CSo19NSEntityDescription"
-- "C10MailReader5Label"
-- !private "VSs10Dictionary"
+- "PSs9AnyObject"
 - "CSo8NSObject"
 - "CSo15NSManagedObject"
+- "C10MailReader5Label"
+- !private "VSs10Dictionary"
 dynamic-lookup:
 cross-module:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/Swift.swiftmodule"

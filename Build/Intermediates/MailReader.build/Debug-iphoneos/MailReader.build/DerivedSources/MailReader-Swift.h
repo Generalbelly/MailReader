@@ -94,12 +94,14 @@ typedef struct _NSZone NSZone;
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
 #pragma clang diagnostic ignored "-Wduplicate-method-arg"
 @class UIWindow;
+@class NSManagedObjectContext;
 @class UIApplication;
 @class NSObject;
 
 SWIFT_CLASS("_TtC10MailReader11AppDelegate")
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 @property (nonatomic) UIWindow * __nullable window;
+@property (nonatomic) NSManagedObjectContext * __nonnull sharedContext;
 - (BOOL)application:(UIApplication * __nonnull)application didFinishLaunchingWithOptions:(NSDictionary * __nullable)launchOptions;
 - (void)applicationWillResignActive:(UIApplication * __nonnull)application;
 - (void)applicationDidEnterBackground:(UIApplication * __nonnull)application;
@@ -111,13 +113,13 @@ SWIFT_CLASS("_TtC10MailReader11AppDelegate")
 
 @class NSDate;
 @class NSEntityDescription;
-@class NSManagedObjectContext;
 
 SWIFT_CLASS("Bookmark")
 @interface Bookmark : NSManagedObject
 @property (nonatomic, copy) NSString * __nonnull html;
 @property (nonatomic) NSDate * __nonnull date;
 @property (nonatomic, copy) NSString * __nonnull title;
+@property (nonatomic, copy) NSString * __nonnull id;
 - (SWIFT_NULLABILITY(nonnull) instancetype)initWithEntity:(NSEntityDescription * __nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * __nullable)context OBJC_DESIGNATED_INITIALIZER;
 - (SWIFT_NULLABILITY(nonnull) instancetype)initWithDict:(NSDictionary * __nonnull)dict context:(NSManagedObjectContext * __nonnull)context OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -171,7 +173,6 @@ SWIFT_CLASS("_TtC10MailReader27BookmarkTableViewController")
 
 SWIFT_CLASS("_TtC10MailReader20DetailViewController")
 @interface DetailViewController : UIViewController <WKNavigationDelegate, WKUIDelegate, UIScrollViewDelegate>
-@property (nonatomic) BOOL showingAlert;
 @property (nonatomic) WKWebView * __null_unspecified webView;
 @property (nonatomic, copy) NSString * __nullable pageUrl;
 @property (nonatomic) BOOL showUp;
@@ -182,6 +183,8 @@ SWIFT_CLASS("_TtC10MailReader20DetailViewController")
 @property (nonatomic) UIBarButtonItem * __null_unspecified forwardButton;
 @property (nonatomic, copy) NSString * __nullable currentHtml;
 @property (nonatomic, copy) NSString * __nonnull bookmarkTitle;
+@property (nonatomic) BOOL alreadyBookmarked;
+@property (nonatomic, copy) NSString * __nullable currentBookmarkId;
 @property (nonatomic) NSManagedObjectContext * __nonnull sharedContext;
 - (void)viewDidLoad;
 - (void)getRidOfStuff;
@@ -190,9 +193,9 @@ SWIFT_CLASS("_TtC10MailReader20DetailViewController")
 - (void)backTapped:(id __nonnull)sender;
 - (void)forwardTapped:(id __nonnull)sender;
 - (void)bookmarked:(id __nonnull)sender;
+- (NSArray * __nonnull)queryForBookmark:(NSString * __nonnull)id;
 - (void)webView:(WKWebView * __nonnull)webView didFinishNavigation:(WKNavigation * __null_unspecified)navigation;
 - (void)observeValueForKeyPath:(NSString * __nonnull)keyPath ofObject:(id __nonnull)object change:(NSDictionary * __nonnull)change context:(void * __null_unspecified)context;
-- (void)showAlert:(NSString * __nonnull)title message:(NSString * __nonnull)message;
 - (void)scrollViewDidScroll:(UIScrollView * __nonnull)scrollView;
 - (WKWebView * __nullable)webView:(WKWebView * __nonnull)webView createWebViewWithConfiguration:(WKWebViewConfiguration * __nonnull)configuration forNavigationAction:(WKNavigationAction * __nonnull)navigationAction windowFeatures:(WKWindowFeatures * __nonnull)windowFeatures;
 - (SWIFT_NULLABILITY(nonnull) instancetype)initWithNibName:(NSString * __nullable)nibNameOrNil bundle:(NSBundle * __nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
@@ -294,13 +297,15 @@ SWIFT_CLASS("_TtC10MailReader18MailViewController")
 @property (nonatomic) Label * __null_unspecified label;
 @property (nonatomic, copy) NSString * __nullable labelId;
 @property (nonatomic) MBProgressHUD * __null_unspecified hud;
+@property (nonatomic) BOOL isHudAdded;
 @property (nonatomic, copy) NSString * __nullable pageUrl;
 @property (nonatomic, copy) NSString * __nullable pageTitle;
-@property (nonatomic) BOOL showingAlert;
 @property (nonatomic) NSInteger cardsToLoad;
 @property (nonatomic) NSInteger counter;
 @property (nonatomic) UIBarButtonItem * __nonnull readerButton;
 @property (nonatomic) UIBarButtonItem * __nonnull infoButton;
+@property (nonatomic) UIBarButtonItem * __nonnull flagButton;
+@property (nonatomic) BOOL flagTapped;
 @property (nonatomic) NSInteger numberOfCards;
 @property (nonatomic, copy) NSArray * __nonnull cardsStack;
 @property (nonatomic, weak) IBOutlet UIImageView * __null_unspecified smile;
@@ -310,6 +315,7 @@ SWIFT_CLASS("_TtC10MailReader18MailViewController")
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)animated;
 - (void)loadMails;
+- (void)noUnreadMails;
 - (void)setupHUD;
 - (void)disableButton;
 - (void)setUpButtons;
@@ -351,7 +357,6 @@ SWIFT_CLASS("_TtC10MailReader24TrashTableViewController")
 @interface TrashTableViewController : UITableViewController <MGSwipeTableCellDelegate>
 @property (nonatomic) MBProgressHUD * __null_unspecified hud;
 @property (nonatomic) Mail * __nullable selectedMail;
-@property (nonatomic) BOOL reloaded;
 @property (nonatomic) NSInteger timesOfScrollingToBottom;
 @property (nonatomic) NSInteger oldestMailHistoryId;
 @property (nonatomic) NSInteger newestMailHistoryId;
@@ -359,12 +364,12 @@ SWIFT_CLASS("_TtC10MailReader24TrashTableViewController")
 @property (nonatomic) NSInteger mailsCounted;
 @property (nonatomic, copy) NSArray * __nonnull newMails;
 @property (nonatomic, copy) NSArray * __nonnull mailsInTrash;
+@property (nonatomic) BOOL hudIsAdded;
 @property (nonatomic) Label * __null_unspecified label;
 @property (nonatomic) NSManagedObjectContext * __nonnull sharedContext;
 - (IBAction)refresh:(UIRefreshControl * __nonnull)sender;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)animated;
-- (void)viewDidDisappear:(BOOL)animated;
 - (void)reloadData;
 - (void)setupHUD;
 - (NSInteger)tableView:(UITableView * __nonnull)tableView numberOfRowsInSection:(NSInteger)section;

@@ -123,7 +123,7 @@ class BookmarkTableViewController: UITableViewController, DZNEmptyDataSetSource,
     func showAlert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
         let action = UIAlertAction(title: "OK", style: .Default) { (action) in
-            self.dismissViewControllerAnimated(true, completion: nil)
+            alertController.dismissViewControllerAnimated(true, completion: nil)
         }
         alertController.addAction(action)
         self.presentViewController(alertController, animated: true, completion: nil)

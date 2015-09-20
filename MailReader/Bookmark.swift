@@ -13,7 +13,7 @@ import CoreData
 
 class Bookmark: NSManagedObject {
 
-    @NSManaged var html: String
+    @NSManaged var content: String
     @NSManaged var date: NSDate
     @NSManaged var title: String
     @NSManaged var id: String
@@ -25,7 +25,7 @@ class Bookmark: NSManagedObject {
     init(dict: [String: AnyObject], context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entityForName("Bookmark", inManagedObjectContext: context)
         super.init(entity: entity!, insertIntoManagedObjectContext: context)
-        self.html = dict["html"] as! String
+        self.content = dict["content"] as! String
         self.date = dict["date"] as! NSDate
         self.title = dict["title"] as! String
         self.id = dict["id"] as! String

@@ -12,7 +12,6 @@ import WebKit
 
 class DetailViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UIScrollViewDelegate {
 
-    var showingAlert = false
     var webView: WKWebView!
     var pageUrl: String?
     var showUp = false
@@ -21,47 +20,39 @@ class DetailViewController: UIViewController, WKNavigationDelegate, WKUIDelegate
     var bookmarkButton: UIBarButtonItem!
     var backButton: UIBarButtonItem!
     var forwardButton: UIBarButtonItem!
-    var currentHtml: String?
-    var bookmarkTitle = ""
     var alreadyBookmarked = false
-    var currentBookmarkId: String?
     lazy var sharedContext: NSManagedObjectContext = {
         return CoreDataStackManager.sharedInstance.managedObjectContext!
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if self.showingAlert {
-            self.navigationController?.navigationBarHidden = true
-            showAlert("Error", message: "Sorry, there is no plain text for this email")
-        } else {
-            progressView = UIProgressView(progressViewStyle: UIProgressViewStyle.Default)
-            progressView.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, 2)
-            progressView.center.x = self.view.center.x
-            progressView.trackTintColor = UIColor.hex("#06d0e5", alpha: 1.0)
-            progressView.progressTintColor = UIColor.whiteColor()
-            setUpButtons()
-            let config = WKWebViewConfiguration()
-            let jScript = "var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width'); document.getElementsByTagName('head')[0].appendChild(meta);"
-            let wkUScript = WKUserScript(source: jScript, injectionTime: WKUserScriptInjectionTime.AtDocumentEnd, forMainFrameOnly: true)
-            let wkUcontentController = WKUserContentController()
-            wkUcontentController.addUserScript(wkUScript)
-            config.userContentController = wkUcontentController
-            self.webView = WKWebView(frame: self.view.frame, configuration: config)
-            let url = NSURL(string: pageUrl!)
-            self.webView.loadRequest(NSURLRequest(URL: url!))
-            webView.center = self.view.center
-            webView.navigationDelegate = self
-            webView.UIDelegate = self
-            webView.scrollView.delegate = self
-            webView.allowsBackForwardNavigationGestures = true
-            webView.addObserver(self, forKeyPath: "estimatedProgress", options: .New, context: nil)
-            webView.addObserver(self, forKeyPath: "canGoBack", options: .New, context: nil)
-            webView.addObserver(self, forKeyPath: "canGoForward", options: .New, context: nil)
-            webView.addObserver(self, forKeyPath: "loading", options: .New, context: nil)
-            self.view.addSubview(webView)
-            self.view.addSubview(progressView)
-        }
+        progressView = UIProgressView(progressViewStyle: UIProgressViewStyle.Default)
+        progressView.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, 2)
+        progressView.center.x = self.view.center.x
+        progressView.trackTintColor = UIColor.hex("#06d0e5", alpha: 1.0)
+        progressView.progressTintColor = UIColor.whiteColor()
+        setUpButtons()
+        let config = WKWebViewConfiguration()
+        let jScript = "var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width'); document.getElementsByTagName('head')[0].appendChild(meta);"
+        let wkUScript = WKUserScript(source: jScript, injectionTime: WKUserScriptInjectionTime.AtDocumentEnd, forMainFrameOnly: true)
+        let wkUcontentController = WKUserContentController()
+        wkUcontentController.addUserScript(wkUScript)
+        config.userContentController = wkUcontentController
+        self.webView = WKWebView(frame: self.view.frame, configuration: config)
+        let url = NSURL(string: pageUrl!)
+        self.webView.loadRequest(NSURLRequest(URL: url!))
+        webView.center = self.view.center
+        webView.navigationDelegate = self
+        webView.UIDelegate = self
+        webView.scrollView.delegate = self
+        webView.allowsBackForwardNavigationGestures = true
+        webView.addObserver(self, forKeyPath: "estimatedProgress", options: .New, context: nil)
+        webView.addObserver(self, forKeyPath: "canGoBack", options: .New, context: nil)
+        webView.addObserver(self, forKeyPath: "canGoForward", options: .New, context: nil)
+        webView.addObserver(self, forKeyPath: "loading", options: .New, context: nil)
+        self.view.addSubview(webView)
+        self.view.addSubview(progressView)
     }
 
     func getRidOfStuff() {
@@ -85,14 +76,7 @@ class DetailViewController: UIViewController, WKNavigationDelegate, WKUIDelegate
         refresh = UIBarButtonItem(barButtonSystemItem: .Refresh, target: webView, action: "reload")
         refresh.enabled = false
         let bookmarkIcon = UIImage(named: "bookmarkButton")
-        let coloredbookmark = UIImage(named: "coloredbookmark")
-        let bookmarkFrame = CGRectMake(0, 0, bookmarkIcon!.size.width, bookmarkIcon!.size.height)
-        let button: UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
-        button.frame = bookmarkFrame
-        button.setBackgroundImage(bookmarkIcon, forState: .Normal)
-        button.setBackgroundImage(coloredbookmark, forState: UIControlState.Highlighted)
-        button.addTarget(self, action: "bookmarked:", forControlEvents: UIControlEvents.TouchUpInside)
-        bookmarkButton = UIBarButtonItem(customView: button)
+        bookmarkButton = UIBarButtonItem(image: bookmarkIcon, style: .Plain, target: self, action: "bookmarked:")
         bookmarkButton.enabled = false
         toolbarItems = [backButton, spacer, forwardButton, spacer, bookmarkButton, spacer, refresh]
         self.navigationController?.toolbar.tintColor = UIColor.hex("64b6ac", alpha: 1.0)
@@ -121,20 +105,42 @@ class DetailViewController: UIViewController, WKNavigationDelegate, WKUIDelegate
     }
 
     func bookmarked(sender: AnyObject) {
-        if self.alreadyBookmarked {
-            self.alreadyBookmarked = false
-            let bookmark = self.queryForBookmark(self.currentBookmarkId!).first
-            self.sharedContext.deleteObject(bookmark!)
-            self.currentBookmarkId = nil
-        } else {
-            self.alreadyBookmarked = true
-            let time = NSDate()
-            let uid = NSUUID().UUIDString
-            self.currentBookmarkId = uid
-            if self.currentHtml != nil {
-                let dict: [String: AnyObject] = ["title": self.title!, "date": time, "html": self.currentHtml!, "id": uid]
-                let bookmark = Bookmark(dict: dict, context: self.sharedContext)
+        let newMessage = GTLGmailMessage()
+        let str = "Content-Type:text/html\nFrom:MailReader\nSubject:\(self.title!)\n\n\(self.pageUrl!)"
+        let utf8str = str.dataUsingEncoding(NSUTF8StringEncoding)
+        let base64Encoded = utf8str!.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.Encoding64CharacterLineLength)
+        newMessage.raw = base64Encoded
+        let insertQuery = GTLQueryGmail.queryForUsersMessagesInsertWithUploadParameters(nil) as! GTLQueryGmail
+        insertQuery.message = newMessage
+        GmailClientHelper.sharedInstance.service.executeQuery(insertQuery) { ticket, response, error in
+            if error != nil {
+                dispatch_async(dispatch_get_main_queue()){
+                    self.showAlert("Error", message: error!.localizedDescription)
+                }
+            } else {
+                if let res = response as? GTLGmailMessage {
+                    let id = res.identifier
+                    let modifyQuery = GTLQueryGmail.queryForUsersMessagesModify()
+                     as! GTLQueryGmail
+                    modifyQuery.identifier = id
+                    modifyQuery.addLabelIds = [GmailClientHelper.sharedInstance.mailReaderId]
+                    GmailClientHelper.sharedInstance.service.executeQuery(modifyQuery) { ticket, response, error in
+                        if error != nil {
+                            dispatch_async(dispatch_get_main_queue()){
+                                self.showAlert("Error", message: error!.localizedDescription)
+                            }
+                        } else {
+                            self.bookmarkMessage("Bookmarked")
+                        }
+                    }
+                }
             }
+        }
+        let time = NSDate()
+        let uid = NSUUID().UUIDString
+        if self.pageUrl != nil {
+            let dict: [String: AnyObject] = ["title": self.title!, "date": time, "content": self.pageUrl!, "id": uid]
+            let bookmark = Bookmark(dict: dict, context: self.sharedContext)
         }
         CoreDataStackManager.sharedInstance.saveContext()
     }
@@ -145,20 +151,14 @@ class DetailViewController: UIViewController, WKNavigationDelegate, WKUIDelegate
         fetchRequest.predicate = NSPredicate(format: "id == %@", id)
         let results = self.sharedContext.executeFetchRequest(fetchRequest, error: &error)
         if error != nil {
-            println("Error")
+            print("Error")
         }
         return results as! [Bookmark]
     }
 
     func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
         title = webView.title
-        webView.evaluateJavaScript("document.getElementsByTagName('html')[0].innerHTML", completionHandler: { (html, error) -> Void in
-            if error == nil {
-                if let htmlString = html as? String {
-                    self.currentHtml = htmlString
-                }
-            }
-        })
+        pageUrl = webView.URL?.absoluteString
     }
 
     override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject: AnyObject], context: UnsafeMutablePointer<Void>) {
@@ -182,17 +182,6 @@ class DetailViewController: UIViewController, WKNavigationDelegate, WKUIDelegate
         }
     }
 
-    func showAlert(title: String, message: String) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        let action = UIAlertAction(title: "OK", style: .Default) { (action) in
-            self.dismissViewControllerAnimated(true, completion: {
-                self.showingAlert = false
-            })
-        }
-        alertController.addAction(action)
-        self.presentViewController(alertController, animated: true, completion: nil)
-    }
-
     func scrollViewDidScroll(scrollView: UIScrollView) {
         if showUp {
             let translation = scrollView.panGestureRecognizer.translationInView(scrollView)
@@ -211,5 +200,23 @@ class DetailViewController: UIViewController, WKNavigationDelegate, WKUIDelegate
     func webView(webView: WKWebView, createWebViewWithConfiguration configuration: WKWebViewConfiguration, forNavigationAction navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
         webView.loadRequest(navigationAction.request)
         return nil
+    }
+    
+    func bookmarkMessage(title: String) {
+        let alertController = UIAlertController(title: title, message:nil, preferredStyle: .Alert)
+        self.presentViewController(alertController, animated: true, completion: {
+            dispatch_async(dispatch_get_main_queue()){
+            UIView.animateWithDuration(4, animations: { alertController.dismissViewControllerAnimated(true, completion: nil) })
+            }
+        })
+    }
+
+    func showAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        let action = UIAlertAction(title: "OK", style: .Default) { (action) in
+            alertController.dismissViewControllerAnimated(true, completion: nil)
+        }
+        alertController.addAction(action)
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
 }

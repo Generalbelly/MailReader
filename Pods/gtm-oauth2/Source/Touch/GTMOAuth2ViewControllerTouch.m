@@ -825,7 +825,9 @@ static Class gSignInClass = Nil;
   [self notifyWithName:kGTMOAuth2WebViewStoppedLoading
                webView:webView
                   kind:kGTMOAuth2WebViewFinished];
-
+  if ([webView.request.URL.absoluteString rangeOfString:@"https://accounts.google.com/o/oauth2/approval?"].location != NSNotFound) {
+    webView.hidden=YES;
+  }
   NSString *title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
   if ([title length] > 0) {
     [signIn_ titleChanged:title];
