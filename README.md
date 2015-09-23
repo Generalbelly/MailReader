@@ -4,7 +4,6 @@
 There are three menus in this app: Unread, Bookmarks, and Trash.</p>
 
 <p>Here's the breakdown:<br>
-&nbsp;
 In the Unread menu, you will see the unread emails of your inbox (Gmail account) as a card stack. From there you can swipe to either side to move your email.</p>
 <ol>
 <li>If you swipe it right, your email becomes bookmarked, and will move to the Bookmarks menu. You can also access the email in the 'MailReader' folder in your Gmail account (created automatically when you download MailReader).</li>
@@ -16,7 +15,6 @@ In the Unread menu, you will see the unread emails of your inbox (Gmail account)
 </ol>
 <p>In the Bookmarks menu, you will see emails and websites you bookmarked.<br>
 If you want to delete a bookmark, swipe to the right and tap 'delete'.</p>
-&nbsp;
 <p>In the Trash menu, you will see emails that you have deleted.<br>
 If you delete an email by accident, swipe to the right and press 'unread'. This will move that email back to the unread menu.</p>
 
