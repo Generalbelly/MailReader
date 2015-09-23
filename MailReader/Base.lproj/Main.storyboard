@@ -234,11 +234,11 @@
             </objects>
             <point key="canvasLocation" x="4798" y="336"/>
         </scene>
-        <!--Bookmark-->
+        <!--Bookmarks-->
         <scene sceneID="zpP-wV-Lao">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sdv-zM-fR8" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Bookmark" image="bookmarkButton" id="Tis-97-hHX"/>
+                    <tabBarItem key="tabBarItem" title="Bookmarks" image="bookmarkButton" id="Tis-97-hHX"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="OEt-ka-hPq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

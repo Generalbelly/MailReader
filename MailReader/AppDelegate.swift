@@ -24,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         UINavigationBar.appearance().barTintColor = UIColor.hex("06d0e5", alpha: 1.0)
         UITabBar.appearance().tintColor = UIColor.hex("06d0e5", alpha: 1.0)
+        UITabBar.appearance().translucent = false
         return true
     }
 

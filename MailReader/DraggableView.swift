@@ -12,7 +12,6 @@ import CoreData
 
 protocol DraggableViewDelegate {
     func cardLoadingCheck(view: DraggableView, completed: Bool)
-    func progressCheck(view: DraggableView, progress: Double)
     func cardCounter(view: DraggableView, swiped: Bool)
 }
 
@@ -54,7 +53,6 @@ class DraggableView: WKWebView, UIGestureRecognizerDelegate {
         didSet {
             if userLeaving {
                 self.removeObserver(self, forKeyPath: "loading")
-                self.removeObserver(self, forKeyPath: "estimatedProgress")
             }
         }
     }
@@ -131,9 +129,7 @@ class DraggableView: WKWebView, UIGestureRecognizerDelegate {
 
     func setup() {
         self.hud = MBProgressHUD.showHUDAddedTo(self, animated: true)
-        self.hud.mode = MBProgressHUDMode.AnnularDeterminate
         self.hud.labelText = "Loading"
-        self.addObserver(self, forKeyPath: "estimatedProgress", options: NSKeyValueObservingOptions.New, context: nil)
         self.addObserver(self, forKeyPath: "loading", options: NSKeyValueObservingOptions.New, context: nil)
         self.originalPoint = self.center
         self.panGesture = UIPanGestureRecognizer(target: self, action: "dragged:")
@@ -145,9 +141,6 @@ class DraggableView: WKWebView, UIGestureRecognizerDelegate {
 
     override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
         switch keyPath {
-        case "estimatedProgress":
-            self.hud.progress = Float(self.estimatedProgress)
-            self.delegate?.progressCheck(self, progress: self.estimatedProgress)
         case "loading":
             self.hud.hide(!self.loading)
             self.delegate?.cardLoadingCheck(self, completed: !self.loading)

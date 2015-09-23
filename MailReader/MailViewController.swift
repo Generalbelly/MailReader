@@ -151,7 +151,6 @@ class MailViewController: UIViewController, DraggableViewDelegate, WKNavigationD
 
     func setupHUD() {
         self.hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        self.hud.mode = MBProgressHUDMode.AnnularDeterminate
         self.hud.labelText = "Loading"
         self.isHudAdded = true
     }
@@ -245,12 +244,6 @@ class MailViewController: UIViewController, DraggableViewDelegate, WKNavigationD
         }
     }
 
-    func progressCheck(view: DraggableView, progress: Double) {
-        if view.tag == self.counter {
-            self.hud.progress = Float(progress)
-        }
-    }
-
     func cardCounter(view: DraggableView, swiped: Bool) {
         counter -= 1
     }
@@ -275,7 +268,7 @@ class MailViewController: UIViewController, DraggableViewDelegate, WKNavigationD
 
     func createCard(mail: Mail?, bookmark: Bookmark?) {
         let navBarHeightAndStatusBarHeight =  self.navigationController!.navigationBar.frame.size.height + UIApplication.sharedApplication().statusBarFrame.size.height
-        let cardFrame = CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y + navBarHeightAndStatusBarHeight, self.view.bounds.size.width, self.view.bounds.size.height)
+        let cardFrame = CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y + navBarHeightAndStatusBarHeight, self.view.bounds.size.width, self.view.bounds.size.height - (self.tabBarController!.tabBar.frame.size.height + navBarHeightAndStatusBarHeight))
         let jScript = "var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width'); document.getElementsByTagName('head')[0].appendChild(meta);"
         let wkUScript = WKUserScript(source: jScript, injectionTime: WKUserScriptInjectionTime.AtDocumentEnd, forMainFrameOnly: true)
         let wkUcontentController = WKUserContentController()

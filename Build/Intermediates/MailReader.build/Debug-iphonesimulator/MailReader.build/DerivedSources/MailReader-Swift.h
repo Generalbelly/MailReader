@@ -324,7 +324,6 @@ SWIFT_CLASS("_TtC10MailReader18MailViewController")
 - (void)tapped:(UIButton * __nonnull)button;
 - (void)prepareForSegue:(UIStoryboardSegue * __nonnull)segue sender:(id __nullable)sender;
 - (void)cardLoadingCheck:(DraggableView * __nonnull)view completed:(BOOL)completed;
-- (void)progressCheck:(DraggableView * __nonnull)view progress:(double)progress;
 - (void)cardCounter:(DraggableView * __nonnull)view swiped:(BOOL)swiped;
 - (void)webView:(WKWebView * __nonnull)webView decidePolicyForNavigationResponse:(WKNavigationResponse * __nonnull)navigationResponse decisionHandler:(void (^ __nonnull)(WKNavigationResponsePolicy))decisionHandler;
 - (WKWebView * __nullable)webView:(WKWebView * __nonnull)webView createWebViewWithConfiguration:(WKWebViewConfiguration * __nonnull)configuration forNavigationAction:(WKNavigationAction * __nonnull)navigationAction windowFeatures:(WKWindowFeatures * __nonnull)windowFeatures;
